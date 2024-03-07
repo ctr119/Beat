@@ -27,6 +27,8 @@
 		20F680462B9A77DF000DE6FD /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F680452B9A77DF000DE6FD /* Album.swift */; };
 		20F680482B9A7983000DE6FD /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F680472B9A7983000DE6FD /* Artist.swift */; };
 		20F6804A2B9A799C000DE6FD /* ImageSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F680492B9A799C000DE6FD /* ImageSize.swift */; };
+		20F6804D2B9A7A62000DE6FD /* AlbumDTO+Domain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F6804C2B9A7A62000DE6FD /* AlbumDTO+Domain.swift */; };
+		20F6804F2B9A7B2E000DE6FD /* ArtistDTO+Domain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F6804E2B9A7B2E000DE6FD /* ArtistDTO+Domain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +73,8 @@
 		20F680452B9A77DF000DE6FD /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
 		20F680472B9A7983000DE6FD /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		20F680492B9A799C000DE6FD /* ImageSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSize.swift; sourceTree = "<group>"; };
+		20F6804C2B9A7A62000DE6FD /* AlbumDTO+Domain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlbumDTO+Domain.swift"; sourceTree = "<group>"; };
+		20F6804E2B9A7B2E000DE6FD /* ArtistDTO+Domain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArtistDTO+Domain.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +201,7 @@
 		20F680302B9A690E000DE6FD /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				20F6804B2B9A7A14000DE6FD /* Converters */,
 				20F680312B9A6949000DE6FD /* AlbumsRepository.swift */,
 			);
 			path = Repositories;
@@ -254,6 +259,15 @@
 				20F680492B9A799C000DE6FD /* ImageSize.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		20F6804B2B9A7A14000DE6FD /* Converters */ = {
+			isa = PBXGroup;
+			children = (
+				20F6804C2B9A7A62000DE6FD /* AlbumDTO+Domain.swift */,
+				20F6804E2B9A7B2E000DE6FD /* ArtistDTO+Domain.swift */,
+			);
+			path = Converters;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -390,6 +404,7 @@
 				20F6802F2B9A6449000DE6FD /* DataError.swift in Sources */,
 				20F680412B9A75CA000DE6FD /* GetTopAlbumsUseCase.swift in Sources */,
 				20F680322B9A6949000DE6FD /* AlbumsRepository.swift in Sources */,
+				20F6804F2B9A7B2E000DE6FD /* ArtistDTO+Domain.swift in Sources */,
 				20F6803B2B9A6D0E000DE6FD /* AlbumSearchResultsDTO.swift in Sources */,
 				20F67FFE2B9A3801000DE6FD /* ContentView.swift in Sources */,
 				20F680482B9A7983000DE6FD /* Artist.swift in Sources */,
@@ -397,6 +412,7 @@
 				20F680382B9A6AE7000DE6FD /* AlbumSearchRequest.swift in Sources */,
 				20F6802B2B9A627F000DE6FD /* NetworkRequest.swift in Sources */,
 				20F6803E2B9A746E000DE6FD /* ArtistsDTO.swift in Sources */,
+				20F6804D2B9A7A62000DE6FD /* AlbumDTO+Domain.swift in Sources */,
 				20F67FFC2B9A3801000DE6FD /* BeatApp.swift in Sources */,
 				20F6802D2B9A6384000DE6FD /* NetworkClient.swift in Sources */,
 				20F6804A2B9A799C000DE6FD /* ImageSize.swift in Sources */,

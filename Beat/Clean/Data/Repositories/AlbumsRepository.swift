@@ -1,7 +1,7 @@
 import Foundation
 
 protocol AlbumsRepository {
-    func searchAlbum(with query: String) async
+    func searchAlbum(with query: String) async -> [Album]
 }
 
 struct AlbumsRepositoryImplementation: AlbumsRepository {
@@ -11,12 +11,13 @@ struct AlbumsRepositoryImplementation: AlbumsRepository {
         self.albumsDataSource = albumsDataSource
     }
     
-    func searchAlbum(with query: String) async {
+    func searchAlbum(with query: String) async -> [Album] {
         do {
             let albumSearchResultsDTO = try await albumsDataSource.search(album: query)
-            print(albumSearchResultsDTO)
+            return albumSearchResultsDTO.data.compactMap { $0.toDomain }
         } catch {
             print(error.localizedDescription)
+            return []
         }
     }
 }
