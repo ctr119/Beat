@@ -14,6 +14,7 @@ struct AlbumsRepositoryImplementation: AlbumsRepository {
     func searchAlbum(with query: String) async {
         do {
             let albumSearchResultsDTO = try await albumsDataSource.search(album: query)
+            print(albumSearchResultsDTO)
         } catch {
             print(error.localizedDescription)
         }

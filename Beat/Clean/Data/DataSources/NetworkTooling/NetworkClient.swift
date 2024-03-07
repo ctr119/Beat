@@ -29,7 +29,7 @@ struct ApiClient: NetworkClient {
         do {
             return try JSONDecoder().decode(T.self, from: data)
         } catch {
-            print("[ApiClient] Error: \(error.localizedDescription)")
+            print("[ApiClient] Error: \(String(describing: error))")
             
             if let responseDataString = String(data: data, encoding: .utf8) {
                 print("[ApiClient] Failure when decoding data into '\(T.self)'. Data: \(responseDataString)")
