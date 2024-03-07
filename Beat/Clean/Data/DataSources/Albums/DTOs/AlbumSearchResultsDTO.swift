@@ -2,7 +2,7 @@ import Foundation
 
 struct AlbumSearchResultsDTO: Decodable {
     struct AlbumResultDTO: Decodable {
-        let id: String
+        let id: Int
         let title: String
         let coverSmall: String
         let coverMedium: String
