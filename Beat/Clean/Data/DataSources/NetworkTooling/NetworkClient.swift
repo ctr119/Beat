@@ -4,7 +4,7 @@ protocol NetworkClient {
     func perform<T: Decodable>(request: NetworkRequest) async throws -> T
 }
 
-struct RestClient: NetworkClient {
+struct ApiClient: NetworkClient {
     private let session: URLSession
     
     init(session: URLSession = .shared) {
@@ -29,10 +29,10 @@ struct RestClient: NetworkClient {
         do {
             return try JSONDecoder().decode(T.self, from: data)
         } catch {
-            print("[Network] Error: \(error.localizedDescription)")
+            print("[ApiClient] Error: \(error.localizedDescription)")
             
             if let responseDataString = String(data: data, encoding: .utf8) {
-                print("[Network] Failure when decoding data into '\(T.self)'. Data: \(responseDataString)")
+                print("[ApiClient] Failure when decoding data into '\(T.self)'. Data: \(responseDataString)")
             }
             
             throw error
