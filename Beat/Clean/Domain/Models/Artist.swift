@@ -1,6 +1,6 @@
 import Foundation
 
-struct ArtistDTO: Decodable {
+struct Artist {
     let id: Int
     let name: String
 }

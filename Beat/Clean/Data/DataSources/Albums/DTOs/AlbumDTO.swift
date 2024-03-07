@@ -6,7 +6,7 @@ struct AlbumDTO: Decodable {
     let coverSmall: String
     let coverMedium: String
     let coverLarge: String
-    let artist: ArtistsDTO
+    let artist: ArtistDTO
     
     enum CodingKeys: String, CodingKey {
         case id
