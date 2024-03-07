@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    let repository = AlbumsRepositoryImplementation(albumsDataSource: AlbumsDataSourceImplementation(apiClient: ApiClient()))
+    let useCase = GetTopAlbumsUseCase(albumsRepository: AlbumsRepositoryImplementation(albumsDataSource: AlbumsDataSourceImplementation(apiClient: ApiClient())))
     
     var body: some View {
         VStack {
@@ -12,7 +12,11 @@ struct ContentView: View {
             
             Button("Request") {
                 Task {
-                    await repository.searchAlbum(with: "eminem")
+                    let albums = await useCase()
+                    for album in albums {
+                        print(album)
+                        print("\n")
+                    }
                 }
             }
         }

@@ -2,7 +2,7 @@ import Foundation
 
 struct GetTopAlbumsUseCase {
     private let albumsQueries = [
-        "eminem"
+        "eminem", "soad"
     ]
     
     private let albumsRepository: AlbumsRepository
@@ -11,9 +11,17 @@ struct GetTopAlbumsUseCase {
         self.albumsRepository = albumsRepository
     }
     
-    func callAsFunction() async {
-        for query in albumsQueries {
-            await albumsRepository.searchAlbum(with: query)
+    func callAsFunction() async -> [Album] {
+        await withTaskGroup(of: [Album].self) { group -> [Album] in
+            for query in albumsQueries {
+                group.addTask {
+                    await albumsRepository.searchAlbum(with: query)
+                }
+            }
+            
+            return await group.reduce(into: [Album]()) { partialResult, taskAlbums in
+                partialResult += taskAlbums
+            }
         }
     }
 }
