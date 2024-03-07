@@ -22,6 +22,8 @@
 		20F680382B9A6AE7000DE6FD /* AlbumSearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F680372B9A6AE7000DE6FD /* AlbumSearchRequest.swift */; };
 		20F6803B2B9A6D0E000DE6FD /* AlbumSearchResultsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F6803A2B9A6D0E000DE6FD /* AlbumSearchResultsDTO.swift */; };
 		20F6803E2B9A746E000DE6FD /* ArtistsDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F6803D2B9A746E000DE6FD /* ArtistsDTO.swift */; };
+		20F680412B9A75CA000DE6FD /* GetTopAlbumsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F680402B9A75CA000DE6FD /* GetTopAlbumsUseCase.swift */; };
+		20F680442B9A76FD000DE6FD /* AlbumDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F680432B9A76FD000DE6FD /* AlbumDTO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +63,8 @@
 		20F680372B9A6AE7000DE6FD /* AlbumSearchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSearchRequest.swift; sourceTree = "<group>"; };
 		20F6803A2B9A6D0E000DE6FD /* AlbumSearchResultsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumSearchResultsDTO.swift; sourceTree = "<group>"; };
 		20F6803D2B9A746E000DE6FD /* ArtistsDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistsDTO.swift; sourceTree = "<group>"; };
+		20F680402B9A75CA000DE6FD /* GetTopAlbumsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTopAlbumsUseCase.swift; sourceTree = "<group>"; };
+		20F680432B9A76FD000DE6FD /* AlbumDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDTO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				20F680272B9A6239000DE6FD /* Data */,
+				20F6803F2B9A75A0000DE6FD /* Domain */,
 			);
 			path = Clean;
 			sourceTree = "<group>";
@@ -212,6 +217,7 @@
 		20F680392B9A6CF6000DE6FD /* DTOs */ = {
 			isa = PBXGroup;
 			children = (
+				20F680432B9A76FD000DE6FD /* AlbumDTO.swift */,
 				20F6803A2B9A6D0E000DE6FD /* AlbumSearchResultsDTO.swift */,
 			);
 			path = DTOs;
@@ -223,6 +229,22 @@
 				20F6803D2B9A746E000DE6FD /* ArtistsDTO.swift */,
 			);
 			path = Artists;
+			sourceTree = "<group>";
+		};
+		20F6803F2B9A75A0000DE6FD /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				20F680422B9A765D000DE6FD /* Models */,
+				20F680402B9A75CA000DE6FD /* GetTopAlbumsUseCase.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		20F680422B9A765D000DE6FD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -356,9 +378,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				20F6802F2B9A6449000DE6FD /* DataError.swift in Sources */,
+				20F680412B9A75CA000DE6FD /* GetTopAlbumsUseCase.swift in Sources */,
 				20F680322B9A6949000DE6FD /* AlbumsRepository.swift in Sources */,
 				20F6803B2B9A6D0E000DE6FD /* AlbumSearchResultsDTO.swift in Sources */,
 				20F67FFE2B9A3801000DE6FD /* ContentView.swift in Sources */,
+				20F680442B9A76FD000DE6FD /* AlbumDTO.swift in Sources */,
 				20F680382B9A6AE7000DE6FD /* AlbumSearchRequest.swift in Sources */,
 				20F6802B2B9A627F000DE6FD /* NetworkRequest.swift in Sources */,
 				20F6803E2B9A746E000DE6FD /* ArtistsDTO.swift in Sources */,

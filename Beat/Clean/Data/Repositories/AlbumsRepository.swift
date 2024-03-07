@@ -1,7 +1,7 @@
 import Foundation
 
 protocol AlbumsRepository {
-    
+    func searchAlbum(with query: String) async
 }
 
 struct AlbumsRepositoryImplementation: AlbumsRepository {
