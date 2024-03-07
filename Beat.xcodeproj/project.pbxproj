@@ -14,6 +14,9 @@
 		20F6800E2B9A3802000DE6FD /* BeatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F6800D2B9A3802000DE6FD /* BeatTests.swift */; };
 		20F680182B9A3802000DE6FD /* BeatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F680172B9A3802000DE6FD /* BeatUITests.swift */; };
 		20F6801A2B9A3802000DE6FD /* BeatUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F680192B9A3802000DE6FD /* BeatUITestsLaunchTests.swift */; };
+		20F6802B2B9A627F000DE6FD /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F6802A2B9A627F000DE6FD /* NetworkRequest.swift */; };
+		20F6802D2B9A6384000DE6FD /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F6802C2B9A6384000DE6FD /* NetworkClient.swift */; };
+		20F6802F2B9A6449000DE6FD /* DataError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F6802E2B9A6449000DE6FD /* DataError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,9 @@
 		20F680132B9A3802000DE6FD /* BeatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BeatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		20F680172B9A3802000DE6FD /* BeatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeatUITests.swift; sourceTree = "<group>"; };
 		20F680192B9A3802000DE6FD /* BeatUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeatUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		20F6802A2B9A627F000DE6FD /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
+		20F6802C2B9A6384000DE6FD /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		20F6802E2B9A6449000DE6FD /* DataError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +101,7 @@
 		20F67FFA2B9A3801000DE6FD /* Beat */ = {
 			isa = PBXGroup;
 			children = (
+				20F680262B9A6234000DE6FD /* Clean */,
 				20F67FFB2B9A3801000DE6FD /* BeatApp.swift */,
 				20F67FFD2B9A3801000DE6FD /* ContentView.swift */,
 				20F67FFF2B9A3802000DE6FD /* Assets.xcassets */,
@@ -127,6 +134,40 @@
 				20F680192B9A3802000DE6FD /* BeatUITestsLaunchTests.swift */,
 			);
 			path = BeatUITests;
+			sourceTree = "<group>";
+		};
+		20F680262B9A6234000DE6FD /* Clean */ = {
+			isa = PBXGroup;
+			children = (
+				20F680272B9A6239000DE6FD /* Data */,
+			);
+			path = Clean;
+			sourceTree = "<group>";
+		};
+		20F680272B9A6239000DE6FD /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				20F6802E2B9A6449000DE6FD /* DataError.swift */,
+				20F680282B9A6241000DE6FD /* DataSources */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		20F680282B9A6241000DE6FD /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				20F680292B9A624B000DE6FD /* Networking */,
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
+		20F680292B9A624B000DE6FD /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				20F6802A2B9A627F000DE6FD /* NetworkRequest.swift */,
+				20F6802C2B9A6384000DE6FD /* NetworkClient.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,8 +300,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20F6802F2B9A6449000DE6FD /* DataError.swift in Sources */,
 				20F67FFE2B9A3801000DE6FD /* ContentView.swift in Sources */,
+				20F6802B2B9A627F000DE6FD /* NetworkRequest.swift in Sources */,
 				20F67FFC2B9A3801000DE6FD /* BeatApp.swift in Sources */,
+				20F6802D2B9A6384000DE6FD /* NetworkClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
