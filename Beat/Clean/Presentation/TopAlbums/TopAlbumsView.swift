@@ -1,8 +1,13 @@
 import SwiftUI
 
 struct TopAlbumsView: View {
-    @State var displayGalleryMode = true
-    @State var albums: [Album] = [
+    private enum DisplayMode: String, CaseIterable {
+        case gallery = "square.grid.2x2.fill"
+        case list = "rectangle.grid.1x2.fill"
+    }
+    
+    @State private var displayMode: DisplayMode = .gallery
+    @State private var albums: [Album] = [
         Album(
             id: 103248,
             title: "The Eminem Show",
@@ -30,7 +35,7 @@ struct TopAlbumsView: View {
     ]
     
     private var columns: [GridItem] {
-        Array(repeating: GridItem(.flexible()), count: displayGalleryMode ? 2 : 1)
+        Array(repeating: GridItem(.flexible()), count: displayMode == .gallery ? 2 : 1)
     }
     
     var body: some View {
@@ -56,17 +61,17 @@ struct TopAlbumsView: View {
                         }
                     }
                 }
-                .padding(displayGalleryMode ? 16 : 0)
+                .padding(displayMode == .gallery ? 16 : 0)
             }
             .navigationTitle("Top Albums")
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
-                    Toggle(isOn: $displayGalleryMode) {
-                        Text("Gallery Mode")
-                            .font(.caption)
+                    Picker("", selection: $displayMode) {
+                        ForEach(DisplayMode.allCases, id: \.self) {
+                            Image(systemName: $0.rawValue)
+                        }
                     }
-                    .toggleStyle(.switch)
-                    .controlSize(.mini)
+                    .pickerStyle(.segmented)
                 }
             }
         }
