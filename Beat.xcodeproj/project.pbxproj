@@ -30,6 +30,8 @@
 		20F6804D2B9A7A62000DE6FD /* AlbumDTO+Domain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F6804C2B9A7A62000DE6FD /* AlbumDTO+Domain.swift */; };
 		20F6804F2B9A7B2E000DE6FD /* ArtistDTO+Domain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F6804E2B9A7B2E000DE6FD /* ArtistDTO+Domain.swift */; };
 		20F680532B9B329C000DE6FD /* TopAlbumsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F680522B9B329C000DE6FD /* TopAlbumsView.swift */; };
+		3EE6674C2B9BAF22005CF471 /* TopAlbumsView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE6674B2B9BAF22005CF471 /* TopAlbumsView+ViewModel.swift */; };
+		3EE6674E2B9BB20A005CF471 /* TopAlbumsViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE6674D2B9BB20A005CF471 /* TopAlbumsViewFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,8 @@
 		20F6804C2B9A7A62000DE6FD /* AlbumDTO+Domain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlbumDTO+Domain.swift"; sourceTree = "<group>"; };
 		20F6804E2B9A7B2E000DE6FD /* ArtistDTO+Domain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArtistDTO+Domain.swift"; sourceTree = "<group>"; };
 		20F680522B9B329C000DE6FD /* TopAlbumsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopAlbumsView.swift; sourceTree = "<group>"; };
+		3EE6674B2B9BAF22005CF471 /* TopAlbumsView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TopAlbumsView+ViewModel.swift"; sourceTree = "<group>"; };
+		3EE6674D2B9BB20A005CF471 /* TopAlbumsViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopAlbumsViewFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -285,6 +289,8 @@
 			isa = PBXGroup;
 			children = (
 				20F680522B9B329C000DE6FD /* TopAlbumsView.swift */,
+				3EE6674B2B9BAF22005CF471 /* TopAlbumsView+ViewModel.swift */,
+				3EE6674D2B9BB20A005CF471 /* TopAlbumsViewFactory.swift */,
 			);
 			path = TopAlbums;
 			sourceTree = "<group>";
@@ -421,6 +427,8 @@
 			files = (
 				20F680462B9A77DF000DE6FD /* Album.swift in Sources */,
 				20F6802F2B9A6449000DE6FD /* DataError.swift in Sources */,
+				3EE6674C2B9BAF22005CF471 /* TopAlbumsView+ViewModel.swift in Sources */,
+				3EE6674E2B9BB20A005CF471 /* TopAlbumsViewFactory.swift in Sources */,
 				20F680412B9A75CA000DE6FD /* GetTopAlbumsUseCase.swift in Sources */,
 				20F680322B9A6949000DE6FD /* AlbumsRepository.swift in Sources */,
 				20F6804F2B9A7B2E000DE6FD /* ArtistDTO+Domain.swift in Sources */,
