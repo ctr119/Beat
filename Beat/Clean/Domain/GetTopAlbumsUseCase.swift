@@ -2,7 +2,7 @@ import Foundation
 
 struct GetTopAlbumsUseCase {
     private let albumsQueries = [
-        "eminem", "soad"
+        "eminem", "soad", "linkinpark"
     ]
     
     private let albumsRepository: AlbumsRepository
