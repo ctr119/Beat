@@ -10,11 +10,21 @@ struct AlbumDetailsView: View {
                     AsyncImage(url: album.coverUrl(size: .large))
                         .overlay {
                             Rectangle()
-                                .fill(.black.opacity(0.6))
+                                .fill(.black.opacity(0.7))
                         }
                     
-                    VStack {
+                    VStack(spacing: 50) {
                         Spacer()
+                        
+                        VStack {
+                            Text(album.title)
+                                .italic()
+                                .underline()
+                                .font(.largeTitle)
+                                .fontDesign(.serif)
+                                .foregroundStyle(.white.opacity(0.7))
+                        }
+                        
                         AsyncImage(url: album.artist.pictureMediumUrl)
                             .clipShape(Circle())
                             .background(
