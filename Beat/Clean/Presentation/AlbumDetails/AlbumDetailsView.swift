@@ -16,14 +16,22 @@ struct AlbumDetailsView: View {
                     VStack(spacing: 50) {
                         Spacer()
                         
-                        VStack {
+                        VStack(spacing: 10) {
                             Text(album.title)
                                 .italic()
                                 .underline()
                                 .font(.largeTitle)
-                                .fontDesign(.serif)
-                                .foregroundStyle(.white.opacity(0.7))
+                            
+                            Text(album.releaseDate?.toString ?? "")
+                            
+                            HStack {
+                                ForEach(album.genres ?? [], id: \.id) { genre in
+                                    Text("#\(genre.name)")
+                                }
+                            }
                         }
+                        .fontDesign(.serif)
+                        .foregroundStyle(.white.opacity(0.7))
                         
                         AsyncImage(url: album.artist.pictureMediumUrl)
                             .clipShape(Circle())

@@ -44,6 +44,8 @@
 		3EE667642B9BCF0C005CF471 /* TrackDTO+Domain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE667632B9BCF0C005CF471 /* TrackDTO+Domain.swift */; };
 		3EE667662B9BD23A005CF471 /* Genre+PreviewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE667652B9BD23A005CF471 /* Genre+PreviewMock.swift */; };
 		3EE667682B9BD2AC005CF471 /* Track+PreviewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE667672B9BD2AC005CF471 /* Track+PreviewMock.swift */; };
+		3EE6676B2B9BD63C005CF471 /* Date+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE6676A2B9BD63C005CF471 /* Date+String.swift */; };
+		3EE6676D2B9BD647005CF471 /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE6676C2B9BD647005CF471 /* String+Date.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,6 +107,8 @@
 		3EE667632B9BCF0C005CF471 /* TrackDTO+Domain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrackDTO+Domain.swift"; sourceTree = "<group>"; };
 		3EE667652B9BD23A005CF471 /* Genre+PreviewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Genre+PreviewMock.swift"; sourceTree = "<group>"; };
 		3EE667672B9BD2AC005CF471 /* Track+PreviewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Track+PreviewMock.swift"; sourceTree = "<group>"; };
+		3EE6676A2B9BD63C005CF471 /* Date+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+String.swift"; sourceTree = "<group>"; };
+		3EE6676C2B9BD647005CF471 /* String+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Date.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +200,7 @@
 				20F680272B9A6239000DE6FD /* Data */,
 				20F6803F2B9A75A0000DE6FD /* Domain */,
 				20F680502B9B3272000DE6FD /* Presentation */,
+				3EE667692B9BD628005CF471 /* Tooling */,
 			);
 			path = Clean;
 			sourceTree = "<group>";
@@ -345,6 +350,15 @@
 				3EE667672B9BD2AC005CF471 /* Track+PreviewMock.swift */,
 			);
 			path = PreviewMocks;
+			sourceTree = "<group>";
+		};
+		3EE667692B9BD628005CF471 /* Tooling */ = {
+			isa = PBXGroup;
+			children = (
+				3EE6676A2B9BD63C005CF471 /* Date+String.swift */,
+				3EE6676C2B9BD647005CF471 /* String+Date.swift */,
+			);
+			path = Tooling;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -505,7 +519,9 @@
 				3EE667512B9BB58E005CF471 /* AlbumDetailsView.swift in Sources */,
 				3EE667562B9BBC9A005CF471 /* Artist+PreviewMock.swift in Sources */,
 				3EE6675E2B9BCCFE005CF471 /* Track.swift in Sources */,
+				3EE6676D2B9BD647005CF471 /* String+Date.swift in Sources */,
 				20F6804A2B9A799C000DE6FD /* ImageSize.swift in Sources */,
+				3EE6676B2B9BD63C005CF471 /* Date+String.swift in Sources */,
 				20F680352B9A6986000DE6FD /* AlbumsDataSource.swift in Sources */,
 				3EE667682B9BD2AC005CF471 /* Track+PreviewMock.swift in Sources */,
 				3EE667602B9BCD8B005CF471 /* Genre.swift in Sources */,
