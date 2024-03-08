@@ -8,6 +8,10 @@ struct AlbumDTO: Decodable {
     let coverLarge: String
     let artist: ArtistDTO
     
+    let genres: GenresDTO?
+    let releaseDate: String?
+    let tracks: TracksDTO?
+    
     enum CodingKeys: String, CodingKey {
         case id
         case title
@@ -15,5 +19,8 @@ struct AlbumDTO: Decodable {
         case coverMedium = "cover_medium"
         case coverLarge = "cover_big"
         case artist
+        case genres
+        case releaseDate = "release_date"
+        case tracks
     }
 }

@@ -1,6 +1,7 @@
 import Foundation
 
 protocol AlbumsDataSource {
+    func getAlbumDetails(id: Int) async throws -> AlbumDTO
     func search(album query: String) async throws -> AlbumSearchResultsDTO
 }
 
@@ -9,6 +10,10 @@ struct AlbumsDataSourceImplementation: AlbumsDataSource {
     
     init(apiClient: NetworkClient) {
         self.apiClient = apiClient
+    }
+    
+    func getAlbumDetails(id: Int) async throws -> AlbumDTO {
+        try await apiClient.perform(request: AlbumDetailsRequest(albumId: id))
     }
     
     func search(album query: String) async throws -> AlbumSearchResultsDTO {
