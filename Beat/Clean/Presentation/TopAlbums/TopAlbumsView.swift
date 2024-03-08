@@ -38,6 +38,22 @@ struct TopAlbumsView: View {
         Array(repeating: GridItem(.flexible()), count: displayMode == .gallery ? 2 : 1)
     }
     
+    init() {
+        UISegmentedControl.appearance()
+            .selectedSegmentTintColor = .systemPink
+        
+        UISegmentedControl.appearance()
+            .setTitleTextAttributes(
+                [.foregroundColor: UIColor.white],
+                for: .selected
+            )
+        UISegmentedControl.appearance()
+            .setTitleTextAttributes(
+                [.foregroundColor: UIColor.gray],
+                for: .normal
+            )
+    }
+    
     var body: some View {
         NavigationStack {
             ScrollView {
