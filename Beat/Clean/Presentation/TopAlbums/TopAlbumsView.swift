@@ -6,7 +6,7 @@ struct TopAlbumsView: View {
         case list = "rectangle.grid.1x2.fill"
     }
     
-    @State private var displayMode: DisplayMode = .gallery
+    @State private var displayMode: DisplayMode = .list
     @State private var albums: [Album] = [
         Album(
             id: 103248,
@@ -61,7 +61,11 @@ struct TopAlbumsView: View {
                     columns: columns, spacing: 16
                 ) {
                     ForEach(albums, id: \.id) { album in
-                        row(for: album)
+                        if displayMode == .gallery {
+                            galleryRow(for: album)
+                        } else {
+                            listRow(for: album)
+                        }
                     }
                 }
                 .padding(displayMode == .gallery ? 16 : 0)
@@ -80,7 +84,7 @@ struct TopAlbumsView: View {
         }
     }
     
-    private func row(for album: Album) -> some View {
+    private func galleryRow(for album: Album) -> some View {
         VStack(spacing: 10) {
             AsyncImage(
                 url: album.coverUrl(size: .large),
@@ -92,10 +96,10 @@ struct TopAlbumsView: View {
                     .aspectRatio(contentMode: .fit)
             }
             .clipShape(
-                RoundedRectangle(cornerRadius: displayMode == .gallery ? 10 : 0)
+                RoundedRectangle(cornerRadius: 10)
             )
             .shadow(
-                color: displayMode == .gallery ? .black : .clear,
+                color: .black,
                 radius: 4,
                 x: 5,
                 y: 5
@@ -107,6 +111,37 @@ struct TopAlbumsView: View {
                 
                 Text(album.artist.name)
                     .font(.subheadline.italic())
+            }
+        }
+    }
+    
+    private func listRow(for album: Album) -> some View {
+        ZStack {
+            AsyncImage(
+                url: album.coverUrl(size: .large),
+                transaction: .init(animation: .easeInOut)
+            ) { imagePhase in
+                imagePhase
+                    .image?
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            }
+            
+            VStack {
+                Spacer()
+                
+                VStack(alignment: .leading) {
+                    Text(album.title)
+                        .font(.title3)
+                        .fontWeight(.bold)
+                    
+                    Text(album.artist.name)
+                        .font(.subheadline)
+                        .italic()
+                }
+                .padding()
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(Color.white.opacity(0.5))
             }
         }
     }
