@@ -4,8 +4,7 @@ import SwiftUI
 struct BeatApp: App {
     var body: some Scene {
         WindowGroup {
-//            ContentView()
-            TopAlbumsViewFactory.make()
+            ContentView()
         }
     }
 }
