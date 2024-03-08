@@ -10,9 +10,9 @@ extension Album {
             coverUrlMedium: URL(string: "https://e-cdns-images.dzcdn.net/images/cover/ec3c8ed67427064c70f67e5815b74cef/250x250-000000-80-0-0.jpg")!,
             coverUrlLarge: URL(string: "https://e-cdns-images.dzcdn.net/images/cover/ec3c8ed67427064c70f67e5815b74cef/500x500-000000-80-0-0.jpg")!,
             artist: .previewEminemMock,
-            genres: nil,
-            releaseDate: nil,
-            tracks: nil
+            genres: [.previewHipHopMock],
+            releaseDate: "2002-01-01".toDate,
+            tracks: .previewEminemTracks
         )
     }
     
@@ -24,9 +24,9 @@ extension Album {
             coverUrlMedium: URL(string: "https://e-cdns-images.dzcdn.net/images/cover/4954f43cc6033ddfa0fa3ee5514a26ca/250x250-000000-80-0-0.jpg")!,
             coverUrlLarge: URL(string: "https://e-cdns-images.dzcdn.net/images/cover/4954f43cc6033ddfa0fa3ee5514a26ca/500x500-000000-80-0-0.jpg")!,
             artist: .previewSoadMock,
-            genres: nil,
-            releaseDate: nil,
-            tracks: nil
+            genres: [.previewRockMock, .previewHardRockMock, .previewMetalMock],
+            releaseDate: "2005-05-17".toDate,
+            tracks: .previewSoadTracks
         )
     }
     
@@ -38,9 +38,9 @@ extension Album {
             coverUrlMedium: URL(string: "https://e-cdns-images.dzcdn.net/images/cover/882448ab63952aa16e502c82db2df160/250x250-000000-80-0-0.jpg")!,
             coverUrlLarge: URL(string: "https://e-cdns-images.dzcdn.net/images/cover/882448ab63952aa16e502c82db2df160/500x500-000000-80-0-0.jpg")!,
             artist: .previewLinkinParkMock,
-            genres: nil,
-            releaseDate: nil,
-            tracks: nil
+            genres: [.previewAlternativeMock],
+            releaseDate: "2003-03-24".toDate,
+            tracks: .previewLinkinParkTracks
         )
     }
 }
