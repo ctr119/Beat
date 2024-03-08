@@ -32,6 +32,9 @@
 		20F680532B9B329C000DE6FD /* TopAlbumsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F680522B9B329C000DE6FD /* TopAlbumsView.swift */; };
 		3EE6674C2B9BAF22005CF471 /* TopAlbumsView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE6674B2B9BAF22005CF471 /* TopAlbumsView+ViewModel.swift */; };
 		3EE6674E2B9BB20A005CF471 /* TopAlbumsViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE6674D2B9BB20A005CF471 /* TopAlbumsViewFactory.swift */; };
+		3EE667512B9BB58E005CF471 /* AlbumDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE667502B9BB58E005CF471 /* AlbumDetailsView.swift */; };
+		3EE667542B9BB5E1005CF471 /* Album+PreviewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE667532B9BB5E1005CF471 /* Album+PreviewMock.swift */; };
+		3EE667562B9BBC9A005CF471 /* Artist+PreviewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE667552B9BBC9A005CF471 /* Artist+PreviewMock.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +84,9 @@
 		20F680522B9B329C000DE6FD /* TopAlbumsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopAlbumsView.swift; sourceTree = "<group>"; };
 		3EE6674B2B9BAF22005CF471 /* TopAlbumsView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TopAlbumsView+ViewModel.swift"; sourceTree = "<group>"; };
 		3EE6674D2B9BB20A005CF471 /* TopAlbumsViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopAlbumsViewFactory.swift; sourceTree = "<group>"; };
+		3EE667502B9BB58E005CF471 /* AlbumDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsView.swift; sourceTree = "<group>"; };
+		3EE667532B9BB5E1005CF471 /* Album+PreviewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Album+PreviewMock.swift"; sourceTree = "<group>"; };
+		3EE667552B9BBC9A005CF471 /* Artist+PreviewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Artist+PreviewMock.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,6 +270,7 @@
 				20F680452B9A77DF000DE6FD /* Album.swift */,
 				20F680472B9A7983000DE6FD /* Artist.swift */,
 				20F680492B9A799C000DE6FD /* ImageSize.swift */,
+				3EE667522B9BB5CD005CF471 /* PreviewMocks */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -280,6 +287,7 @@
 		20F680502B9B3272000DE6FD /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				3EE6674F2B9BB57D005CF471 /* AlbumDetails */,
 				20F680512B9B327E000DE6FD /* TopAlbums */,
 			);
 			path = Presentation;
@@ -293,6 +301,23 @@
 				3EE6674D2B9BB20A005CF471 /* TopAlbumsViewFactory.swift */,
 			);
 			path = TopAlbums;
+			sourceTree = "<group>";
+		};
+		3EE6674F2B9BB57D005CF471 /* AlbumDetails */ = {
+			isa = PBXGroup;
+			children = (
+				3EE667502B9BB58E005CF471 /* AlbumDetailsView.swift */,
+			);
+			path = AlbumDetails;
+			sourceTree = "<group>";
+		};
+		3EE667522B9BB5CD005CF471 /* PreviewMocks */ = {
+			isa = PBXGroup;
+			children = (
+				3EE667532B9BB5E1005CF471 /* Album+PreviewMock.swift */,
+				3EE667552B9BBC9A005CF471 /* Artist+PreviewMock.swift */,
+			);
+			path = PreviewMocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -425,6 +450,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3EE667542B9BB5E1005CF471 /* Album+PreviewMock.swift in Sources */,
 				20F680462B9A77DF000DE6FD /* Album.swift in Sources */,
 				20F6802F2B9A6449000DE6FD /* DataError.swift in Sources */,
 				3EE6674C2B9BAF22005CF471 /* TopAlbumsView+ViewModel.swift in Sources */,
@@ -443,6 +469,8 @@
 				20F6804D2B9A7A62000DE6FD /* AlbumDTO+Domain.swift in Sources */,
 				20F67FFC2B9A3801000DE6FD /* BeatApp.swift in Sources */,
 				20F6802D2B9A6384000DE6FD /* NetworkClient.swift in Sources */,
+				3EE667512B9BB58E005CF471 /* AlbumDetailsView.swift in Sources */,
+				3EE667562B9BBC9A005CF471 /* Artist+PreviewMock.swift in Sources */,
 				20F6804A2B9A799C000DE6FD /* ImageSize.swift in Sources */,
 				20F680352B9A6986000DE6FD /* AlbumsDataSource.swift in Sources */,
 			);
