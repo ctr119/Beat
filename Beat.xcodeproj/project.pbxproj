@@ -38,6 +38,10 @@
 		3EE667582B9BC7CA005CF471 /* AlbumDetailsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE667572B9BC7CA005CF471 /* AlbumDetailsRequest.swift */; };
 		3EE6675A2B9BC92D005CF471 /* TracksDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE667592B9BC92D005CF471 /* TracksDTO.swift */; };
 		3EE6675C2B9BCBAD005CF471 /* GenresDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE6675B2B9BCBAD005CF471 /* GenresDTO.swift */; };
+		3EE6675E2B9BCCFE005CF471 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE6675D2B9BCCFE005CF471 /* Track.swift */; };
+		3EE667602B9BCD8B005CF471 /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE6675F2B9BCD8B005CF471 /* Genre.swift */; };
+		3EE667622B9BCEE3005CF471 /* GenreDTO+Domain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE667612B9BCEE3005CF471 /* GenreDTO+Domain.swift */; };
+		3EE667642B9BCF0C005CF471 /* TrackDTO+Domain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE667632B9BCF0C005CF471 /* TrackDTO+Domain.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +97,10 @@
 		3EE667572B9BC7CA005CF471 /* AlbumDetailsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsRequest.swift; sourceTree = "<group>"; };
 		3EE667592B9BC92D005CF471 /* TracksDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracksDTO.swift; sourceTree = "<group>"; };
 		3EE6675B2B9BCBAD005CF471 /* GenresDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresDTO.swift; sourceTree = "<group>"; };
+		3EE6675D2B9BCCFE005CF471 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		3EE6675F2B9BCD8B005CF471 /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		3EE667612B9BCEE3005CF471 /* GenreDTO+Domain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GenreDTO+Domain.swift"; sourceTree = "<group>"; };
+		3EE667632B9BCF0C005CF471 /* TrackDTO+Domain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TrackDTO+Domain.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,7 +286,9 @@
 			children = (
 				20F680452B9A77DF000DE6FD /* Album.swift */,
 				20F680472B9A7983000DE6FD /* Artist.swift */,
+				3EE6675F2B9BCD8B005CF471 /* Genre.swift */,
 				20F680492B9A799C000DE6FD /* ImageSize.swift */,
+				3EE6675D2B9BCCFE005CF471 /* Track.swift */,
 				3EE667522B9BB5CD005CF471 /* PreviewMocks */,
 			);
 			path = Models;
@@ -289,6 +299,8 @@
 			children = (
 				20F6804C2B9A7A62000DE6FD /* AlbumDTO+Domain.swift */,
 				20F6804E2B9A7B2E000DE6FD /* ArtistDTO+Domain.swift */,
+				3EE667612B9BCEE3005CF471 /* GenreDTO+Domain.swift */,
+				3EE667632B9BCF0C005CF471 /* TrackDTO+Domain.swift */,
 			);
 			path = Converters;
 			sourceTree = "<group>";
@@ -460,6 +472,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3EE667542B9BB5E1005CF471 /* Album+PreviewMock.swift in Sources */,
+				3EE667642B9BCF0C005CF471 /* TrackDTO+Domain.swift in Sources */,
 				20F680462B9A77DF000DE6FD /* Album.swift in Sources */,
 				20F6802F2B9A6449000DE6FD /* DataError.swift in Sources */,
 				3EE6674C2B9BAF22005CF471 /* TopAlbumsView+ViewModel.swift in Sources */,
@@ -470,6 +483,7 @@
 				20F6803B2B9A6D0E000DE6FD /* AlbumSearchResultsDTO.swift in Sources */,
 				20F67FFE2B9A3801000DE6FD /* ContentView.swift in Sources */,
 				20F680482B9A7983000DE6FD /* Artist.swift in Sources */,
+				3EE667622B9BCEE3005CF471 /* GenreDTO+Domain.swift in Sources */,
 				3EE6675C2B9BCBAD005CF471 /* GenresDTO.swift in Sources */,
 				20F680442B9A76FD000DE6FD /* AlbumDTO.swift in Sources */,
 				3EE667582B9BC7CA005CF471 /* AlbumDetailsRequest.swift in Sources */,
@@ -483,8 +497,10 @@
 				20F6802D2B9A6384000DE6FD /* NetworkClient.swift in Sources */,
 				3EE667512B9BB58E005CF471 /* AlbumDetailsView.swift in Sources */,
 				3EE667562B9BBC9A005CF471 /* Artist+PreviewMock.swift in Sources */,
+				3EE6675E2B9BCCFE005CF471 /* Track.swift in Sources */,
 				20F6804A2B9A799C000DE6FD /* ImageSize.swift in Sources */,
 				20F680352B9A6986000DE6FD /* AlbumsDataSource.swift in Sources */,
+				3EE667602B9BCD8B005CF471 /* Genre.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

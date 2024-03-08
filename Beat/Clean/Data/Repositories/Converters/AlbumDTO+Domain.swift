@@ -13,7 +13,19 @@ extension AlbumDTO {
             coverUrlSmall: small,
             coverUrlMedium: medium,
             coverUrlLarge: large,
-            artist: artist
+            artist: artist,
+            genres: self.genres?.data.map { $0.toDomain },
+            releaseDate: releaseDate?.toDate,
+            tracks: self.tracks?.data.map { $0.toDomain }
         )
+    }
+}
+
+extension String {
+    var toDate: Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        
+        return dateFormatter.date(from: self)
     }
 }

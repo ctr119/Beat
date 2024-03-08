@@ -9,6 +9,9 @@ struct Album {
     private let coverUrlLarge: URL
     
     let artist: Artist
+    let genres: [Genre]?
+    let releaseDate: Date?
+    let tracks: [Track]?
     
     init(
         id: Int,
@@ -16,7 +19,10 @@ struct Album {
         coverUrlSmall: URL,
         coverUrlMedium: URL,
         coverUrlLarge: URL,
-        artist: Artist
+        artist: Artist,
+        genres: [Genre]?,
+        releaseDate: Date?,
+        tracks: [Track]?
     ) {
         self.id = id
         self.title = title
@@ -24,6 +30,9 @@ struct Album {
         self.coverUrlMedium = coverUrlMedium
         self.coverUrlLarge = coverUrlLarge
         self.artist = artist
+        self.genres = genres
+        self.releaseDate = releaseDate
+        self.tracks = tracks
     }
     
     func coverUrl(size: ImageSize) -> URL {
