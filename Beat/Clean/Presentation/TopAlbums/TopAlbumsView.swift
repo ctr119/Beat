@@ -61,20 +61,7 @@ struct TopAlbumsView: View {
                     columns: columns, spacing: 16
                 ) {
                     ForEach(albums, id: \.id) { album in
-                        VStack {
-                            AsyncImage(
-                                url: album.coverUrl(size: .large),
-                                transaction: .init(animation: .easeInOut)
-                            ) { imagePhase in
-                                imagePhase
-                                    .image?
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fit)
-                            }
-                            
-                            Text(album.title)
-                            Text(album.artist.name)
-                        }
+                        row(for: album)
                     }
                 }
                 .padding(displayMode == .gallery ? 16 : 0)
@@ -89,6 +76,37 @@ struct TopAlbumsView: View {
                     }
                     .pickerStyle(.segmented)
                 }
+            }
+        }
+    }
+    
+    private func row(for album: Album) -> some View {
+        VStack(spacing: 10) {
+            AsyncImage(
+                url: album.coverUrl(size: .large),
+                transaction: .init(animation: .easeInOut)
+            ) { imagePhase in
+                imagePhase
+                    .image?
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+            }
+            .clipShape(
+                RoundedRectangle(cornerRadius: displayMode == .gallery ? 10 : 0)
+            )
+            .shadow(
+                color: displayMode == .gallery ? .black : .clear,
+                radius: 4,
+                x: 5,
+                y: 5
+            )
+            
+            VStack {
+                Text(album.title)
+                    .font(.headline)
+                
+                Text(album.artist.name)
+                    .font(.subheadline.italic())
             }
         }
     }
