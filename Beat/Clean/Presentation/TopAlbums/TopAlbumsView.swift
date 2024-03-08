@@ -34,28 +34,41 @@ struct TopAlbumsView: View {
     }
     
     var body: some View {
-        ScrollView {
-            LazyVGrid(
-                columns: columns, spacing: 16
-            ) {
-                ForEach(albums, id: \.id) { album in
-                    VStack {
-                        AsyncImage(
-                            url: album.coverUrl(size: .large),
-                            transaction: .init(animation: .easeInOut)
-                        ) { imagePhase in
-                            imagePhase
-                                .image?
-                                .resizable()
-                                .aspectRatio(contentMode: .fit)
+        NavigationStack {
+            ScrollView {
+                LazyVGrid(
+                    columns: columns, spacing: 16
+                ) {
+                    ForEach(albums, id: \.id) { album in
+                        VStack {
+                            AsyncImage(
+                                url: album.coverUrl(size: .large),
+                                transaction: .init(animation: .easeInOut)
+                            ) { imagePhase in
+                                imagePhase
+                                    .image?
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                            }
+                            
+                            Text(album.title)
+                            Text(album.artist.name)
                         }
-                        
-                        Text(album.title)
-                        Text(album.artist.name)
                     }
                 }
+                .padding(displayGalleryMode ? 16 : 0)
             }
-            .padding(displayGalleryMode ? 16 : 0)
+            .navigationTitle("Top Albums")
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    Toggle(isOn: $displayGalleryMode) {
+                        Text("Gallery Mode")
+                            .font(.caption)
+                    }
+                    .toggleStyle(.switch)
+                    .controlSize(.mini)
+                }
+            }
         }
     }
 }
