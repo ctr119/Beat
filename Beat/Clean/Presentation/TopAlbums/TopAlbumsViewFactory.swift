@@ -7,6 +7,6 @@ enum TopAlbumsViewFactory {
         let useCase = GetTopAlbumsUseCaseImplementation(albumsRepository: repository)
         let viewModel = TopAlbumsView.ViewModel(getTopAlbumsUseCase: useCase)
         
-        return TopAlbumsView(viewModel: viewModel)
+        return TopAlbumsView(viewModel: viewModel, router: .init())
     }
 }

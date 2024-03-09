@@ -8,9 +8,11 @@ struct TopAlbumsView: View {
     
     @State private var displayMode: DisplayMode = .gallery
     @State private var viewModel: ViewModel
+    @State private var router: Router
     
-    init(viewModel: ViewModel) {
+    init(viewModel: ViewModel, router: Router) {
         self.viewModel = viewModel
+        self.router = router
         
         UISegmentedControl.appearance()
             .selectedSegmentTintColor = .systemYellow
@@ -28,17 +30,18 @@ struct TopAlbumsView: View {
     }
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $router.navigationPath) {
             ScrollView {
                 LazyVGrid(
                     columns: columns, spacing: 16
                 ) {
                     ForEach(viewModel.albums, id: \.id) { album in
-                        if displayMode == .gallery {
-                            galleryRow(for: album)
-                        } else {
-                            listRow(for: album)
-                        }
+                        row(for: album)
+                            .onTapGesture {
+                                router
+                                    .navigationPath
+                                    .navigate(to: .albumDetails(id: album.id))
+                            }
                     }
                 }
                 .padding(displayMode == .gallery ? 16 : 0)
@@ -57,11 +60,23 @@ struct TopAlbumsView: View {
             .task {
                 await viewModel.loadAlbums()
             }
+            .navigationDestination(for: Router.Destination.self) { destination in
+                router.view(for: destination)
+            }
         }
     }
     
     private var columns: [GridItem] {
         Array(repeating: GridItem(.flexible()), count: displayMode == .gallery ? 2 : 1)
+    }
+    
+    @ViewBuilder
+    private func row(for album: Album) -> some View {
+        if displayMode == .gallery {
+            galleryRow(for: album)
+        } else {
+            listRow(for: album)
+        }
     }
     
     private func galleryRow(for album: Album) -> some View {
@@ -129,6 +144,6 @@ struct TopAlbumsView: View {
 
 #if DEBUG
 #Preview {
-    TopAlbumsView(viewModel: .previewMock)
+    TopAlbumsView(viewModel: .previewMock, router: .init())
 }
 #endif
