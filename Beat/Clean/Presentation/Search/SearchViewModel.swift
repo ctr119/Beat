@@ -3,7 +3,7 @@ import SwiftUI
 
 @Observable
 class SearchViewModel {
-    var state: ViewModelState<[Album]> = .idle
+    var albums: [Album] = []
     
     private let searchAlbumsUseCase: SearchAlbumsUseCase
     
@@ -12,12 +12,10 @@ class SearchViewModel {
     }
     
     func performSearch(query: String) async {
-        state = .loading
-        
         let results = await searchAlbumsUseCase(query: query)
         
         await MainActor.run {
-            state = .loaded(results)
+            albums = results
         }
     }
 }

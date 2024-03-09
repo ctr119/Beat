@@ -8,21 +8,15 @@ struct SearchView: View {
     }
     
     var body: some View {
-        switch viewModel.state {
-        case .idle:
-            Color.clear.onAppear(perform: {
-                Task {
-                    await viewModel.performSearch(query: "tokio")
-                }
-            })
-        case .loading:
-            ProgressView()
-        case .failed(let error):
-            Text(error.localizedDescription)
-        case .loaded(let value):
+        VStack {
             AlbumsListView(
-                screenTitle: "Search",
-                albums: value
+                screenTitle: "Explore",
+                albums: viewModel.albums,
+                onSearchSubmit: { searchQuery in
+                    Task {
+                        await viewModel.performSearch(query: searchQuery)
+                    }
+                }
             )
         }
     }

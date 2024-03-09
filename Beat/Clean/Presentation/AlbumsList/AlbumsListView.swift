@@ -8,16 +8,20 @@ struct AlbumsListView: View {
     
     @State private var displayMode: DisplayMode = .gallery
     @State private var router: AlbumsListRouter = .init()
+    @State private var searchQuery: String = ""
     
     private let screenTitle: String
     private var albums: [Album]
+    private let onSearchSubmit: ((String) -> Void)?
     
     init(
         screenTitle: String,
-        albums: [Album]
+        albums: [Album],
+        onSearchSubmit: ((String) -> Void)? = nil
     ) {
         self.screenTitle = screenTitle
         self.albums = albums
+        self.onSearchSubmit = onSearchSubmit
         
         UISegmentedControl.appearance()
             .selectedSegmentTintColor = .systemYellow
@@ -36,21 +40,36 @@ struct AlbumsListView: View {
     
     var body: some View {
         NavigationStack(path: $router.navigationPath) {
-            ScrollView {
-                LazyVGrid(
-                    columns: columns, spacing: 16
-                ) {
-                    ForEach(albums, id: \.id) { album in
-                        row(for: album)
-                            .onTapGesture {
-                                print(album.id)
-                                router
-                                    .navigationPath
-                                    .navigate(to: .albumDetails(id: album.id))
-                            }
+            VStack {
+                ScrollView {
+                    LazyVGrid(
+                        columns: columns, spacing: 16
+                    ) {
+                        ForEach(albums, id: \.id) { album in
+                            row(for: album)
+                                .onTapGesture {
+                                    print(album.id)
+                                    router
+                                        .navigationPath
+                                        .navigate(to: .albumDetails(id: album.id))
+                                }
+                        }
                     }
+                    .padding(displayMode == .gallery ? 16 : 0)
                 }
-                .padding(displayMode == .gallery ? 16 : 0)
+                
+                if let onSearchSubmit {
+                    TextField("Search...", text: $searchQuery)
+                        .padding()
+                        .background(
+                            Capsule()
+                                .fill(Color.gray.opacity(0.3))
+                        )
+                        .padding()
+                        .onSubmit {
+                            onSearchSubmit(searchQuery)
+                        }
+                }
             }
             .navigationTitle(screenTitle)
             .navigationDestination(for: AlbumsListRouter.Destination.self) { destination in
@@ -94,7 +113,8 @@ struct AlbumsListView: View {
     
     return AlbumsListView(
         screenTitle: "My List",
-        albums: previewAlbums
+        albums: previewAlbums,
+        onSearchSubmit: { query in }
     )
 }
 #endif
