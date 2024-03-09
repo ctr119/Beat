@@ -98,7 +98,7 @@ struct AlbumDetailsView: View {
                         
                         Spacer()
                         
-                        Text(track.durationInSeconds, format: .number)
+                        Text(track.durationInSeconds, format: .timerCountdown)
                     }
                     .monospaced()
                     .padding(6)

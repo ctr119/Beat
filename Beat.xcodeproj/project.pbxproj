@@ -46,6 +46,7 @@
 		3EE667682B9BD2AC005CF471 /* Track+PreviewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE667672B9BD2AC005CF471 /* Track+PreviewMock.swift */; };
 		3EE6676B2B9BD63C005CF471 /* Date+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE6676A2B9BD63C005CF471 /* Date+String.swift */; };
 		3EE6676D2B9BD647005CF471 /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE6676C2B9BD647005CF471 /* String+Date.swift */; };
+		3EE6676F2B9C6B3A005CF471 /* FormatStyle+TimerCountdownFormatStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE6676E2B9C6B3A005CF471 /* FormatStyle+TimerCountdownFormatStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,7 @@
 		3EE667672B9BD2AC005CF471 /* Track+PreviewMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Track+PreviewMock.swift"; sourceTree = "<group>"; };
 		3EE6676A2B9BD63C005CF471 /* Date+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+String.swift"; sourceTree = "<group>"; };
 		3EE6676C2B9BD647005CF471 /* String+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Date.swift"; sourceTree = "<group>"; };
+		3EE6676E2B9C6B3A005CF471 /* FormatStyle+TimerCountdownFormatStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FormatStyle+TimerCountdownFormatStyle.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -357,6 +359,7 @@
 			children = (
 				3EE6676A2B9BD63C005CF471 /* Date+String.swift */,
 				3EE6676C2B9BD647005CF471 /* String+Date.swift */,
+				3EE6676E2B9C6B3A005CF471 /* FormatStyle+TimerCountdownFormatStyle.swift */,
 			);
 			path = Tooling;
 			sourceTree = "<group>";
@@ -513,6 +516,7 @@
 				3EE6675A2B9BC92D005CF471 /* TracksDTO.swift in Sources */,
 				20F6802B2B9A627F000DE6FD /* NetworkRequest.swift in Sources */,
 				20F6803E2B9A746E000DE6FD /* ArtistsDTO.swift in Sources */,
+				3EE6676F2B9C6B3A005CF471 /* FormatStyle+TimerCountdownFormatStyle.swift in Sources */,
 				20F6804D2B9A7A62000DE6FD /* AlbumDTO+Domain.swift in Sources */,
 				20F67FFC2B9A3801000DE6FD /* BeatApp.swift in Sources */,
 				20F6802D2B9A6384000DE6FD /* NetworkClient.swift in Sources */,
