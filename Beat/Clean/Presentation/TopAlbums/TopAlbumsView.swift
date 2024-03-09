@@ -64,6 +64,7 @@ struct TopAlbumsView: View {
                 router.view(for: destination)
             }
         }
+        .tint(Color.yellow)
     }
     
     private var columns: [GridItem] {
