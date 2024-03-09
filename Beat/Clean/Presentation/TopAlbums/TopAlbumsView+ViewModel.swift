@@ -4,7 +4,7 @@ import SwiftUI
 extension TopAlbumsView {
     @Observable
     class ViewModel {
-        private(set) var albums: [Album] = []
+        var albums: [Album] = []
         
         private let getTopAlbumsUseCase: GetTopAlbumsUseCase
         
