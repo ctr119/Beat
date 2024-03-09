@@ -14,7 +14,7 @@ extension TopAlbumsView {
             switch destination {
             case .albumDetails(let id):
                 AnyView(
-                    AlbumDetailsView(album: .previewEminemMock)
+                    AlbumDetailsViewFactory.make(albumId: id)
                 )
             }
         }

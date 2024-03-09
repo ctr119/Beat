@@ -1,22 +1,40 @@
 import SwiftUI
 
 struct AlbumDetailsView: View {
-    let album: Album
+    @State var viewModel: ViewModel
     
     var body: some View {
+        switch viewModel.state {
+        case .idle:
+            Color.clear.onAppear(perform: {
+                Task {
+                    await viewModel.loadDetails()
+                }
+            })
+        case .loading:
+            ProgressView()
+        case .failed(let error):
+            Text(error.localizedDescription)
+        case .loaded(let album):
+            content(album: album)
+        }
+    }
+    
+    @ViewBuilder
+    private func content(album: Album) -> some View {
         ScrollView {
             VStack(spacing: 30) {
-                headingSection
+                headingSection(album: album)
                 
-                albumInfoSection
+                albumInfoSection(album: album)
                 
-                trackList
+                trackList(album: album)
             }
         }
         .ignoresSafeArea(.container, edges: .top)
     }
     
-    private var headingSection: some View {
+    private func headingSection(album: Album) -> some View {
         VStack(spacing: 0) {
             AsyncImage(url: album.coverUrl(size: .large)) { imagePhase in
                 imagePhase
@@ -50,7 +68,7 @@ struct AlbumDetailsView: View {
         .padding(.bottom, -75.0)
     }
     
-    private var albumInfoSection: some View {
+    private func albumInfoSection(album: Album) -> some View {
         VStack(spacing: 20) {
             VStack(spacing: 8) {
                 Text(album.artist.name)
@@ -84,14 +102,14 @@ struct AlbumDetailsView: View {
         .foregroundStyle(.black.opacity(0.7))
     }
     
-    private var trackList: some View {
+    private func trackList(album: Album) -> some View {
         VStack {
             Text("Tracks")
                 .fontDesign(.serif)
                 .font(.headline)
             
             VStack(spacing: 0) {
-                ForEach(Array(zip(tracks.indices, tracks)), id: \.0) { index, track in
+                ForEach(Array(zip(tracks(album).indices, tracks(album))), id: \.0) { index, track in
                     HStack {
                         Text("#\(index + 1).")
                         Text(track.title)
@@ -110,13 +128,18 @@ struct AlbumDetailsView: View {
         }
     }
     
-    private var tracks: [Track] {
+    private func tracks(_ album: Album) -> [Track] {
         album.tracks ?? []
     }
 }
 
 #if DEBUG
 #Preview {
-    AlbumDetailsView(album: .previewEminemMock)
+    AlbumDetailsView(
+        viewModel: .init(
+            id: 0,
+            getAlbumDetailsUseCase: GetAlbumDetailsUseCasePreviewMock()
+        )
+    )
 }
 #endif

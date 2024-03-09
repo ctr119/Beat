@@ -3,7 +3,7 @@ import Foundation
 extension AlbumDetailsView {
     @Observable
     class ViewModel {
-        private(set) var album: Album?
+        private(set) var state: ViewModelState<Album> = .idle
         
         private let initialId: Int
         private let getAlbumDetailsUseCase: GetAlbumDetailsUseCase
@@ -15,12 +15,14 @@ extension AlbumDetailsView {
         
         func loadDetails() async {
             do {
+                state = .loading
+                
                 let albumDetails = try await getAlbumDetailsUseCase(id: initialId)
                 await MainActor.run {
-                    album = albumDetails
+                    state = .loaded(albumDetails)
                 }
             } catch {
-                // change the state
+                state = .failed(error)
             }
         }
     }
