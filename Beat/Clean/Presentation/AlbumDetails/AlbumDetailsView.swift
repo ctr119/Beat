@@ -5,12 +5,12 @@ struct AlbumDetailsView: View {
     
     var body: some View {
         ScrollView {
-            VStack(spacing: 20) {
+            VStack(spacing: 30) {
                 headingSection
                 
                 albumInfoSection
                 
-                Text("Track list")
+                trackList
             }
         }
         .ignoresSafeArea(.container, edges: .top)
@@ -82,6 +82,36 @@ struct AlbumDetailsView: View {
         }
         .fontDesign(.serif)
         .foregroundStyle(.black.opacity(0.7))
+    }
+    
+    private var trackList: some View {
+        VStack {
+            Text("Tracks")
+                .fontDesign(.serif)
+                .font(.headline)
+            
+            VStack(spacing: 0) {
+                ForEach(Array(zip(tracks.indices, tracks)), id: \.0) { index, track in
+                    HStack {
+                        Text("#\(index + 1).")
+                        Text(track.title)
+                        
+                        Spacer()
+                        
+                        Text(track.durationInSeconds, format: .number)
+                    }
+                    .monospaced()
+                    .padding(6)
+                    .background(
+                        index.isMultiple(of: 2) ? Color.gray.opacity(0.4) : Color.clear
+                    )
+                }
+            }
+        }
+    }
+    
+    private var tracks: [Track] {
+        album.tracks ?? []
     }
 }
 
