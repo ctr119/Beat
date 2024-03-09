@@ -1,6 +1,7 @@
 import Foundation
 
 protocol AlbumsRepository {
+    func getDetails(of albumId: Int) async throws -> Album
     func searchAlbum(with query: String) async -> [Album]
 }
 
@@ -9,6 +10,21 @@ struct AlbumsRepositoryImplementation: AlbumsRepository {
     
     init(albumsDataSource: AlbumsDataSource) {
         self.albumsDataSource = albumsDataSource
+    }
+    
+    func getDetails(of albumId: Int) async throws -> Album {
+        do {
+            let albumDTO = try await albumsDataSource.getAlbumDetails(id: albumId)
+            guard let album = albumDTO.toDomain else {
+                throw DomainError.malformedData
+            }
+            return album
+            
+        } catch is DataError {
+            throw DomainError.networkIssue
+        } catch {
+            throw error
+        }
     }
     
     func searchAlbum(with query: String) async -> [Album] {

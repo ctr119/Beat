@@ -21,7 +21,8 @@ enum DataError: Error {
         }
     }
     
-    case failure
+    case unexpectedFailure
+    case malformedUrl
     case network(_ network: Network)
-    case unableToBuildUrl
+    case noHTTPProtocol
 }

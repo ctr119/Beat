@@ -48,6 +48,7 @@
 		3EE6676D2B9BD647005CF471 /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE6676C2B9BD647005CF471 /* String+Date.swift */; };
 		3EE6676F2B9C6B3A005CF471 /* FormatStyle+TimerCountdownFormatStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE6676E2B9C6B3A005CF471 /* FormatStyle+TimerCountdownFormatStyle.swift */; };
 		3EE667712B9C702B005CF471 /* TopAlbumsView+Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE667702B9C702B005CF471 /* TopAlbumsView+Router.swift */; };
+		3EE667742B9C910D005CF471 /* DomainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE667732B9C910D005CF471 /* DomainError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +114,7 @@
 		3EE6676C2B9BD647005CF471 /* String+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Date.swift"; sourceTree = "<group>"; };
 		3EE6676E2B9C6B3A005CF471 /* FormatStyle+TimerCountdownFormatStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FormatStyle+TimerCountdownFormatStyle.swift"; sourceTree = "<group>"; };
 		3EE667702B9C702B005CF471 /* TopAlbumsView+Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TopAlbumsView+Router.swift"; sourceTree = "<group>"; };
+		3EE667732B9C910D005CF471 /* DomainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,6 +290,7 @@
 		20F6803F2B9A75A0000DE6FD /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				3EE667722B9C90FB005CF471 /* Errors */,
 				20F680422B9A765D000DE6FD /* Models */,
 				20F680402B9A75CA000DE6FD /* GetTopAlbumsUseCase.swift */,
 			);
@@ -365,6 +368,14 @@
 				3EE6676E2B9C6B3A005CF471 /* FormatStyle+TimerCountdownFormatStyle.swift */,
 			);
 			path = Tooling;
+			sourceTree = "<group>";
+		};
+		3EE667722B9C90FB005CF471 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				3EE667732B9C910D005CF471 /* DomainError.swift */,
+			);
+			path = Errors;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -509,6 +520,7 @@
 				20F6804F2B9A7B2E000DE6FD /* ArtistDTO+Domain.swift in Sources */,
 				20F6803B2B9A6D0E000DE6FD /* AlbumSearchResultsDTO.swift in Sources */,
 				20F67FFE2B9A3801000DE6FD /* ContentView.swift in Sources */,
+				3EE667742B9C910D005CF471 /* DomainError.swift in Sources */,
 				20F680482B9A7983000DE6FD /* Artist.swift in Sources */,
 				3EE667622B9BCEE3005CF471 /* GenreDTO+Domain.swift in Sources */,
 				3EE6675C2B9BCBAD005CF471 /* GenresDTO.swift in Sources */,
