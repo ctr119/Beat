@@ -13,11 +13,11 @@ struct TopAlbumsView: View {
         self.viewModel = viewModel
         
         UISegmentedControl.appearance()
-            .selectedSegmentTintColor = .systemPink
+            .selectedSegmentTintColor = .systemYellow
         
         UISegmentedControl.appearance()
             .setTitleTextAttributes(
-                [.foregroundColor: UIColor.white],
+                [.foregroundColor: UIColor.systemPurple],
                 for: .selected
             )
         UISegmentedControl.appearance()
