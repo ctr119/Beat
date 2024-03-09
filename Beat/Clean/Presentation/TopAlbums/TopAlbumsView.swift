@@ -16,7 +16,7 @@ struct TopAlbumsView: View {
     var body: some View {
         AlbumsListView(
             screenTitle: "Top Albums",
-            albums: $viewModel.albums
+            albums: viewModel.albums
         )
         .onAppear {
             Task {

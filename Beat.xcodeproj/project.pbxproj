@@ -57,6 +57,8 @@
 		3EE667872B9D0A85005CF471 /* AlbumListGalleryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE667862B9D0A85005CF471 /* AlbumListGalleryRow.swift */; };
 		3EE667892B9D0AD4005CF471 /* AlbumListRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE667882B9D0AD4005CF471 /* AlbumListRow.swift */; };
 		3EE6678B2B9D0BF8005CF471 /* AlbumsListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE6678A2B9D0BF8005CF471 /* AlbumsListRouter.swift */; };
+		3EE6678F2B9D17F1005CF471 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE6678E2B9D17F1005CF471 /* SearchViewModel.swift */; };
+		3EE667912B9D1820005CF471 /* SearchAlbumsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE667902B9D1820005CF471 /* SearchAlbumsUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +133,8 @@
 		3EE667862B9D0A85005CF471 /* AlbumListGalleryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumListGalleryRow.swift; sourceTree = "<group>"; };
 		3EE667882B9D0AD4005CF471 /* AlbumListRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumListRow.swift; sourceTree = "<group>"; };
 		3EE6678A2B9D0BF8005CF471 /* AlbumsListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumsListRouter.swift; sourceTree = "<group>"; };
+		3EE6678E2B9D17F1005CF471 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		3EE667902B9D1820005CF471 /* SearchAlbumsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAlbumsUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -308,6 +312,7 @@
 			children = (
 				3EE667792B9CA42D005CF471 /* GetAlbumDetailsUseCase.swift */,
 				20F680402B9A75CA000DE6FD /* GetTopAlbumsUseCase.swift */,
+				3EE667902B9D1820005CF471 /* SearchAlbumsUseCase.swift */,
 				3EE667722B9C90FB005CF471 /* Errors */,
 				20F680422B9A765D000DE6FD /* Models */,
 			);
@@ -403,6 +408,7 @@
 			isa = PBXGroup;
 			children = (
 				3EE667802B9D0822005CF471 /* SearchView.swift */,
+				3EE6678E2B9D17F1005CF471 /* SearchViewModel.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -570,6 +576,7 @@
 				3EE667812B9D0822005CF471 /* SearchView.swift in Sources */,
 				20F6803B2B9A6D0E000DE6FD /* AlbumSearchResultsDTO.swift in Sources */,
 				20F67FFE2B9A3801000DE6FD /* ContentView.swift in Sources */,
+				3EE6678F2B9D17F1005CF471 /* SearchViewModel.swift in Sources */,
 				3EE6677E2B9CAC96005CF471 /* AlbumDetailsViewFactory.swift in Sources */,
 				3EE667742B9C910D005CF471 /* DomainError.swift in Sources */,
 				20F680482B9A7983000DE6FD /* Artist.swift in Sources */,
@@ -577,6 +584,7 @@
 				3EE6675C2B9BCBAD005CF471 /* GenresDTO.swift in Sources */,
 				20F680442B9A76FD000DE6FD /* AlbumDTO.swift in Sources */,
 				3EE667582B9BC7CA005CF471 /* AlbumDetailsRequest.swift in Sources */,
+				3EE667912B9D1820005CF471 /* SearchAlbumsUseCase.swift in Sources */,
 				20F680382B9A6AE7000DE6FD /* AlbumSearchRequest.swift in Sources */,
 				20F680532B9B329C000DE6FD /* TopAlbumsView.swift in Sources */,
 				3EE6677C2B9CA73D005CF471 /* ViewModelState.swift in Sources */,

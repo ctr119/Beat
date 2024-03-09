@@ -6,18 +6,18 @@ struct AlbumsListView: View {
         case list = "rectangle.grid.1x2.fill"
     }
     
-    @Binding var albums: [Album]
     @State private var displayMode: DisplayMode = .gallery
     @State private var router: AlbumsListRouter = .init()
     
     private let screenTitle: String
+    private var albums: [Album]
     
     init(
         screenTitle: String,
-        albums: Binding<[Album]>
+        albums: [Album]
     ) {
         self.screenTitle = screenTitle
-        self._albums = albums
+        self.albums = albums
         
         UISegmentedControl.appearance()
             .selectedSegmentTintColor = .systemYellow
@@ -86,7 +86,7 @@ struct AlbumsListView: View {
 
 #if DEBUG
 #Preview {
-    @State var previewAlbums: [Album] = [
+    var previewAlbums: [Album] = [
         .previewEminemMock,
         .previewSoadMock,
         .previewLinkinParkMock
@@ -94,7 +94,7 @@ struct AlbumsListView: View {
     
     return AlbumsListView(
         screenTitle: "My List",
-        albums: $previewAlbums
+        albums: previewAlbums
     )
 }
 #endif
