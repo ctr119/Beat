@@ -49,6 +49,8 @@
 		3EE6676F2B9C6B3A005CF471 /* FormatStyle+TimerCountdownFormatStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE6676E2B9C6B3A005CF471 /* FormatStyle+TimerCountdownFormatStyle.swift */; };
 		3EE667712B9C702B005CF471 /* TopAlbumsView+Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE667702B9C702B005CF471 /* TopAlbumsView+Router.swift */; };
 		3EE667742B9C910D005CF471 /* DomainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE667732B9C910D005CF471 /* DomainError.swift */; };
+		3EE667782B9CA3FA005CF471 /* AlbumDetailsView+ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE667772B9CA3FA005CF471 /* AlbumDetailsView+ViewModel.swift */; };
+		3EE6677A2B9CA42D005CF471 /* GetAlbumDetailsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE667792B9CA42D005CF471 /* GetAlbumDetailsUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +117,8 @@
 		3EE6676E2B9C6B3A005CF471 /* FormatStyle+TimerCountdownFormatStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FormatStyle+TimerCountdownFormatStyle.swift"; sourceTree = "<group>"; };
 		3EE667702B9C702B005CF471 /* TopAlbumsView+Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TopAlbumsView+Router.swift"; sourceTree = "<group>"; };
 		3EE667732B9C910D005CF471 /* DomainError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainError.swift; sourceTree = "<group>"; };
+		3EE667772B9CA3FA005CF471 /* AlbumDetailsView+ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlbumDetailsView+ViewModel.swift"; sourceTree = "<group>"; };
+		3EE667792B9CA42D005CF471 /* GetAlbumDetailsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAlbumDetailsUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -290,9 +294,10 @@
 		20F6803F2B9A75A0000DE6FD /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				3EE667792B9CA42D005CF471 /* GetAlbumDetailsUseCase.swift */,
+				20F680402B9A75CA000DE6FD /* GetTopAlbumsUseCase.swift */,
 				3EE667722B9C90FB005CF471 /* Errors */,
 				20F680422B9A765D000DE6FD /* Models */,
-				20F680402B9A75CA000DE6FD /* GetTopAlbumsUseCase.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -345,6 +350,7 @@
 			isa = PBXGroup;
 			children = (
 				3EE667502B9BB58E005CF471 /* AlbumDetailsView.swift */,
+				3EE667772B9CA3FA005CF471 /* AlbumDetailsView+ViewModel.swift */,
 			);
 			path = AlbumDetails;
 			sourceTree = "<group>";
@@ -530,6 +536,7 @@
 				20F680532B9B329C000DE6FD /* TopAlbumsView.swift in Sources */,
 				3EE667712B9C702B005CF471 /* TopAlbumsView+Router.swift in Sources */,
 				3EE6675A2B9BC92D005CF471 /* TracksDTO.swift in Sources */,
+				3EE667782B9CA3FA005CF471 /* AlbumDetailsView+ViewModel.swift in Sources */,
 				20F6802B2B9A627F000DE6FD /* NetworkRequest.swift in Sources */,
 				20F6803E2B9A746E000DE6FD /* ArtistsDTO.swift in Sources */,
 				3EE6676F2B9C6B3A005CF471 /* FormatStyle+TimerCountdownFormatStyle.swift in Sources */,
@@ -541,6 +548,7 @@
 				3EE6675E2B9BCCFE005CF471 /* Track.swift in Sources */,
 				3EE6676D2B9BD647005CF471 /* String+Date.swift in Sources */,
 				20F6804A2B9A799C000DE6FD /* ImageSize.swift in Sources */,
+				3EE6677A2B9CA42D005CF471 /* GetAlbumDetailsUseCase.swift in Sources */,
 				3EE6676B2B9BD63C005CF471 /* Date+String.swift in Sources */,
 				20F680352B9A6986000DE6FD /* AlbumsDataSource.swift in Sources */,
 				3EE667682B9BD2AC005CF471 /* Track+PreviewMock.swift in Sources */,
