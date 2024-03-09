@@ -43,6 +43,8 @@ struct Album {
             coverUrlMedium
         case .large:
             coverUrlLarge
+        case .xlarge:
+            coverUrlLarge
         }
     }
 }
