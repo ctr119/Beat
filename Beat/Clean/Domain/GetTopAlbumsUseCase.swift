@@ -23,8 +23,11 @@ struct GetTopAlbumsUseCaseImplementation: GetTopAlbumsUseCase {
                 }
             }
             
-            return await group.reduce(into: [Album]()) { partialResult, taskAlbums in
+            let allAlbums = await group.reduce(into: [Album]()) { partialResult, taskAlbums in
                 partialResult += taskAlbums
+            }
+            return allAlbums.sorted { lhs, rhs in
+                lhs.title < rhs.title
             }
         }
     }
