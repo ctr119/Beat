@@ -14,17 +14,30 @@ struct SearchView: View {
     var body: some View {
         NavigationStack(path: $router.navigationPath) {
             VStack {
-                AlbumsListView(
-                    albums: viewModel.albums,
-                    rowBuilder: { album in
-                        AlbumListGalleryRow(album: album)
-                    },
-                    onItemTapped: { album in
-                        router
-                            .navigationPath
-                            .navigate(to: .albumDetails(id: album.id))
-                    }
-                )
+                switch viewModel.state {
+                case .idle:
+                    Spacer()
+                    
+                case .loading:
+                    progressIndicator
+                    
+                case .failed(let error):
+                    Text("\(error.localizedDescription)")
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                    
+                case .loaded(let albums):
+                    AlbumsListView(
+                        albums: albums,
+                        rowBuilder: { album in
+                            AlbumListGalleryRow(album: album)
+                        },
+                        onItemTapped: { album in
+                            router
+                                .navigationPath
+                                .navigate(to: .albumDetails(id: album.id))
+                        }
+                    )
+                }
                 
                 TextField("Search...", text: $searchQuery)
                     .padding()
@@ -45,6 +58,25 @@ struct SearchView: View {
             }
         }
         .tint(Color.yellow)
+    }
+    
+    @ViewBuilder
+    private var progressIndicator: some View {
+        ProgressView()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(
+                LinearGradient(
+                    colors: [
+                        Color.gray.opacity(0.7),
+                        Color.gray.opacity(0.5),
+                        .clear
+                    ],
+                    startPoint: .top,
+                    endPoint: .bottom
+                )
+            )
+            .tint(Color.black)
+            .controlSize(.large)
     }
 }
 

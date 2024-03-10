@@ -1,9 +1,20 @@
 import Foundation
 import SwiftUI
 
+enum SearchError: Error, LocalizedError {
+    case emptyBox
+    
+    var errorDescription: String? {
+        switch self {
+        case .emptyBox:
+            "Type something!"
+        }
+    }
+}
+
 @Observable
 class SearchViewModel {
-    var albums: [Album] = []
+    var state: ViewModelState<[Album]> = .idle
     
     private let searchAlbumsUseCase: SearchAlbumsUseCase
     
@@ -12,10 +23,17 @@ class SearchViewModel {
     }
     
     func performSearch(query: String) async {
+        state = .loading
+        
+        guard !query.isEmpty else {
+            state = .failed(SearchError.emptyBox)
+            return
+        }
+        
         let results = await searchAlbumsUseCase(query: query)
         
         await MainActor.run {
-            albums = results
+            state = .loaded(results)
         }
     }
 }
