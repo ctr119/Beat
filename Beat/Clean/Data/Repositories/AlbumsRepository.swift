@@ -2,7 +2,7 @@ import Foundation
 
 protocol AlbumsRepository {
     func getDetails(of albumId: Int) async throws -> Album
-    func searchAlbum(with query: String) async -> [Album]
+    func searchAlbum(with query: String, limit: Int) async -> [Album]
 }
 
 struct AlbumsRepositoryImplementation: AlbumsRepository {
@@ -27,9 +27,9 @@ struct AlbumsRepositoryImplementation: AlbumsRepository {
         }
     }
     
-    func searchAlbum(with query: String) async -> [Album] {
+    func searchAlbum(with query: String, limit: Int) async -> [Album] {
         do {
-            let albumSearchResultsDTO = try await albumsDataSource.search(album: query)
+            let albumSearchResultsDTO = try await albumsDataSource.search(album: query, limit: limit)
             return albumSearchResultsDTO.data.compactMap { $0.toDomain }
         } catch {
             print(error.localizedDescription)

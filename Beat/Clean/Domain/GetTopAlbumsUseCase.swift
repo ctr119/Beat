@@ -19,7 +19,7 @@ struct GetTopAlbumsUseCaseImplementation: GetTopAlbumsUseCase {
         await withTaskGroup(of: [Album].self) { group -> [Album] in
             for query in albumsQueries {
                 group.addTask {
-                    await albumsRepository.searchAlbum(with: query)
+                    await albumsRepository.searchAlbum(with: query, limit: 1)
                 }
             }
             

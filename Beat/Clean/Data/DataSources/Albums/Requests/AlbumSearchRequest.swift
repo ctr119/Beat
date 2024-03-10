@@ -6,10 +6,11 @@ struct AlbumSearchRequest: NetworkRequest {
         var params: [String : String] = [:]
         
         params["q"] = query
-        params["limit"] = "1"
+        params["limit"] = "\(limit)"
         
         return params
     }
     
     let query: String
+    let limit: Int
 }

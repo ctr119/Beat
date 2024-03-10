@@ -12,7 +12,7 @@ struct SearchAlbumsUseCaseImplementation: SearchAlbumsUseCase {
     }
     
     func callAsFunction(query: String) async -> [Album] {
-        await albumsRepository.searchAlbum(with: query)
+        await albumsRepository.searchAlbum(with: query, limit: 30)
     }
 }
 
