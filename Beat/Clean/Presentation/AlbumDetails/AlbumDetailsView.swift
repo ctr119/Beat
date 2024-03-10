@@ -13,6 +13,10 @@ struct AlbumDetailsView: View {
             })
         case .loading:
             ProgressView()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .background(Color.gray.opacity(0.3))
+                .tint(Color.black)
+                .controlSize(.large)
         case .failed(let error):
             Text(error.localizedDescription)
         case .loaded(let album):
