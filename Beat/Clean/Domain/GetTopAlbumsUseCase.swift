@@ -6,7 +6,7 @@ protocol GetTopAlbumsUseCase {
 
 struct GetTopAlbumsUseCaseImplementation: GetTopAlbumsUseCase {
     private let albumsQueries = [
-        "eminem", "soad", "linkinpark"
+        "eminem", "soad", "linkinpark", "falloutboy", "evanescence", "metalica", "paparoach"
     ]
     
     private let albumsRepository: AlbumsRepository

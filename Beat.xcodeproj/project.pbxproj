@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20D48AB42B9E5A76004F4DC1 /* SearchViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D48AB32B9E5A76004F4DC1 /* SearchViewFactory.swift */; };
 		20F67FFC2B9A3801000DE6FD /* BeatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F67FFB2B9A3801000DE6FD /* BeatApp.swift */; };
 		20F67FFE2B9A3801000DE6FD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F67FFD2B9A3801000DE6FD /* ContentView.swift */; };
 		20F680002B9A3802000DE6FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20F67FFF2B9A3802000DE6FD /* Assets.xcassets */; };
@@ -79,6 +80,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		20D48AB32B9E5A76004F4DC1 /* SearchViewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewFactory.swift; sourceTree = "<group>"; };
 		20F67FF82B9A3801000DE6FD /* Beat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Beat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20F67FFB2B9A3801000DE6FD /* BeatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeatApp.swift; sourceTree = "<group>"; };
 		20F67FFD2B9A3801000DE6FD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -409,6 +411,7 @@
 			children = (
 				3EE667802B9D0822005CF471 /* SearchView.swift */,
 				3EE6678E2B9D17F1005CF471 /* SearchViewModel.swift */,
+				20D48AB32B9E5A76004F4DC1 /* SearchViewFactory.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -589,6 +592,7 @@
 				20F680532B9B329C000DE6FD /* TopAlbumsView.swift in Sources */,
 				3EE6677C2B9CA73D005CF471 /* ViewModelState.swift in Sources */,
 				3EE667872B9D0A85005CF471 /* AlbumListGalleryRow.swift in Sources */,
+				20D48AB42B9E5A76004F4DC1 /* SearchViewFactory.swift in Sources */,
 				3EE6675A2B9BC92D005CF471 /* TracksDTO.swift in Sources */,
 				3EE667782B9CA3FA005CF471 /* AlbumDetailsView+ViewModel.swift in Sources */,
 				20F6802B2B9A627F000DE6FD /* NetworkRequest.swift in Sources */,
