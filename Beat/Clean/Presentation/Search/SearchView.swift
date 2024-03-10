@@ -2,22 +2,30 @@ import SwiftUI
 
 struct SearchView: View {
     @State private var viewModel: SearchViewModel
+    @State private var router: AlbumsListRouter
     
-    init(viewModel: SearchViewModel) {
+    init(viewModel: SearchViewModel, router: AlbumsListRouter) {
         self.viewModel = viewModel
+        self.router = router
     }
     
     var body: some View {
-        VStack {
+        NavigationStack(path: $router.navigationPath) {
             AlbumsListView(
-                screenTitle: "Explore",
                 albums: viewModel.albums,
-                onSearchSubmit: { searchQuery in
-                    Task {
-                        await viewModel.performSearch(query: searchQuery)
-                    }
+                rowBuilder: { album in
+                    AlbumListGalleryRow(album: album)
+                },
+                onItemTapped: { album in
+                    router
+                        .navigationPath
+                        .navigate(to: .albumDetails(id: album.id))
                 }
             )
+            .navigationTitle("Explore...")
+            .navigationDestination(for: AlbumsListRouter.Destination.self) { destination in
+                router.view(for: destination)
+            }
         }
     }
 }
@@ -27,7 +35,8 @@ struct SearchView: View {
     SearchView(
         viewModel: .init(
             searchAlbumsUseCase: SearchAlbumsUseCasePreviewMock()
-        )
+        ),
+        router: .init()
     )
 }
 #endif

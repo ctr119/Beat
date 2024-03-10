@@ -1,105 +1,58 @@
 import SwiftUI
 
-struct AlbumsListView: View {
-    private enum DisplayMode: String, CaseIterable {
-        case gallery = "square.grid.2x2.fill"
-        case list = "rectangle.grid.1x2.fill"
-    }
-    
-    @State private var displayMode: DisplayMode = .gallery
-    @State private var router: AlbumsListRouter = .init()
-    @State private var searchQuery: String = ""
-    
-    private let screenTitle: String
+struct AlbumsListView<Content: View>: View {
     private var albums: [Album]
-    private let onSearchSubmit: ((String) -> Void)?
+    private let numberOfColumns: Int
+    private let rowBuilder: (Album) -> Content
+    private let onItemTapped: (Album) -> Void
     
     init(
-        screenTitle: String,
         albums: [Album],
-        onSearchSubmit: ((String) -> Void)? = nil
+        numberOfColumns: Int = 2,
+        @ViewBuilder rowBuilder: @escaping (Album) -> Content,
+        onItemTapped: @escaping (Album) -> Void
     ) {
-        self.screenTitle = screenTitle
         self.albums = albums
-        self.onSearchSubmit = onSearchSubmit
-        
-        UISegmentedControl.appearance()
-            .selectedSegmentTintColor = .systemYellow
-        
-        UISegmentedControl.appearance()
-            .setTitleTextAttributes(
-                [.foregroundColor: UIColor.systemPurple],
-                for: .selected
-            )
-        UISegmentedControl.appearance()
-            .setTitleTextAttributes(
-                [.foregroundColor: UIColor.gray],
-                for: .normal
-            )
+        self.numberOfColumns = numberOfColumns
+        self.rowBuilder = rowBuilder
+        self.onItemTapped = onItemTapped
     }
     
     var body: some View {
-        NavigationStack(path: $router.navigationPath) {
-            VStack {
-                ScrollView {
-                    LazyVGrid(
-                        columns: columns, spacing: 16
-                    ) {
-                        ForEach(albums, id: \.id) { album in
-                            row(for: album)
-                                .onTapGesture {
-                                    print(album.id)
-                                    router
-                                        .navigationPath
-                                        .navigate(to: .albumDetails(id: album.id))
-                                }
-                        }
-                    }
-                    .padding(displayMode == .gallery ? 16 : 0)
-                }
-                
-                if let onSearchSubmit {
-                    TextField("Search...", text: $searchQuery)
-                        .padding()
-                        .background(
-                            Capsule()
-                                .fill(Color.gray.opacity(0.3))
-                        )
-                        .padding()
-                        .onSubmit {
-                            onSearchSubmit(searchQuery)
+        ScrollView {
+            LazyVGrid(
+                columns: columns, spacing: 16
+            ) {
+                ForEach(albums, id: \.id) { album in
+                    rowBuilder(album)
+                        .onTapGesture {
+                            onItemTapped(album)
                         }
                 }
             }
-            .navigationTitle(screenTitle)
-            .navigationDestination(for: AlbumsListRouter.Destination.self) { destination in
-                router.view(for: destination)
-            }
-            .toolbar {
-                ToolbarItem(placement: .primaryAction) {
-                    Picker("", selection: $displayMode) {
-                        ForEach(DisplayMode.allCases, id: \.self) {
-                            Image(systemName: $0.rawValue)
-                        }
-                    }
-                    .pickerStyle(.segmented)
-                }
-            }
+            .padding(numberOfColumns == 1 ? 0 : 16)
         }
-        .tint(Color.yellow)
+        
+//                if let onSearchSubmit {
+//                    TextField("Search...", text: $searchQuery)
+//                        .padding()
+//                        .background(
+//                            Capsule()
+//                                .fill(Color.gray.opacity(0.3))
+//                        )
+//                        .padding()
+//                        .onSubmit {
+//                            onSearchSubmit(searchQuery)
+//                        }
+//                }
+//            }
     }
     
     private var columns: [GridItem] {
-        Array(repeating: GridItem(.flexible()), count: displayMode == .gallery ? 2 : 1)
-    }
-    
-    @ViewBuilder
-    private func row(for album: Album) -> some View {
-        if displayMode == .gallery {
-            AlbumListGalleryRow(album: album)
-        } else {
-            AlbumListRow(album: album)
-        }
+        Array(
+            repeating: GridItem(.flexible()),
+            count: numberOfColumns
+        )
     }
 }
 
@@ -112,9 +65,14 @@ struct AlbumsListView: View {
     ]
     
     return AlbumsListView(
-        screenTitle: "My List",
         albums: previewAlbums,
-        onSearchSubmit: { query in }
+        numberOfColumns: 2,
+        rowBuilder: { album in
+            AlbumListGalleryRow(album: album)
+        },
+        onItemTapped: { album in
+            print("Hello, \(album.artist.name)!")
+        }
     )
 }
 #endif

@@ -8,26 +8,74 @@ struct TopAlbumsView: View {
     
     @State private var displayMode: DisplayMode = .gallery
     @State private var viewModel: ViewModel
+    @State private var router: AlbumsListRouter
     
-    init(viewModel: ViewModel) {
+    init(viewModel: ViewModel, router: AlbumsListRouter) {
         self.viewModel = viewModel
+        self.router = router
+        
+        UISegmentedControl.appearance()
+            .selectedSegmentTintColor = .systemYellow
+        
+        UISegmentedControl.appearance()
+            .setTitleTextAttributes(
+                [.foregroundColor: UIColor.systemPurple],
+                for: .selected
+            )
+        UISegmentedControl.appearance()
+            .setTitleTextAttributes(
+                [.foregroundColor: UIColor.gray],
+                for: .normal
+            )
     }
     
     var body: some View {
-        AlbumsListView(
-            screenTitle: "Top Albums",
-            albums: viewModel.albums
-        )
-        .onAppear {
-            Task {
-                await viewModel.loadAlbums()
+        NavigationStack(path: $router.navigationPath) {
+            AlbumsListView(
+                albums: viewModel.albums,
+                numberOfColumns: displayMode == .gallery ? 2 : 1,
+                rowBuilder: { album in
+                    if displayMode == .gallery {
+                        AlbumListGalleryRow(album: album)
+                    } else {
+                        AlbumListRow(album: album)
+                    }
+                },
+                onItemTapped: { album in
+                    router
+                        .navigationPath
+                        .navigate(to: .albumDetails(id: album.id))
+                }
+            )
+            .navigationTitle("Top Albums")
+            .navigationDestination(for: AlbumsListRouter.Destination.self) { destination in
+                router.view(for: destination)
+            }
+            .onAppear {
+                Task {
+                    await viewModel.loadAlbums()
+                }
+            }
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    Picker("", selection: $displayMode) {
+                        ForEach(DisplayMode.allCases, id: \.self) {
+                            Image(systemName: $0.rawValue)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+                }
             }
         }
+        .tint(Color.yellow)
     }
 }
 
 #if DEBUG
 #Preview {
-    TopAlbumsView(viewModel: .previewMock)
+    TopAlbumsView(
+        viewModel: .previewMock,
+        router: .init()
+    )
 }
 #endif
