@@ -1,6 +1,10 @@
 import SwiftUI
+import SwiftData
 
 struct ContentView: View {
+    // TODO: Pass it to the Favourites tab factory when ready
+    let container: ModelContainer
+    
     var body: some View {
         TabView {
             TopAlbumsViewFactory.make()
@@ -30,9 +34,3 @@ struct ContentView: View {
         .tint(Color.purple)
     }
 }
-
-#if DEBUG
-#Preview {
-    ContentView()
-}
-#endif
