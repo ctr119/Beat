@@ -12,6 +12,8 @@ struct GetFavouriteTracksUseCaseImplementation: GetFavouriteTracksUseCase {
     }
     
     func callAsFunction() -> [PositionedItem<Track>] {
-        tracksRepository.getTracks()
+        tracksRepository.getTracks().sorted { lhs, rhs in
+            lhs.position < rhs.position
+        }
     }
 }
