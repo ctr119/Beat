@@ -16,7 +16,7 @@ struct GetAlbumDetailsUseCaseImplementation: GetAlbumDetailsUseCase {
     func callAsFunction(id albumId: Int) async throws -> (album: Album, favouriteTracksIds: [Int]) {
         let album = try await albumsRepository.getDetails(of: albumId)
         let tracksIds = album.tracks?.map { $0.id } ?? []
-        let favouriteTracksIds = tracksRepository.getTracks(tracksIds).map { $0.item.id }
+        let favouriteTracksIds = tracksRepository.getFavouriteTracks(tracksIds).map { $0.item.id }
         
         return (album, favouriteTracksIds)
     }
