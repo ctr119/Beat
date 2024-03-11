@@ -12,6 +12,9 @@
 		20D48ABC2B9E6CAB004F4DC1 /* TrackDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D48ABB2B9E6CAB004F4DC1 /* TrackDTO.swift */; };
 		20D48ABE2B9E6E97004F4DC1 /* TracksDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D48ABD2B9E6E97004F4DC1 /* TracksDataSource.swift */; };
 		20D48AC02B9E71EB004F4DC1 /* TracksRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D48ABF2B9E71EB004F4DC1 /* TracksRepository.swift */; };
+		20D48AC22B9FAF32004F4DC1 /* GetFavouriteTracksUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D48AC12B9FAF32004F4DC1 /* GetFavouriteTracksUseCase.swift */; };
+		20D48AC42B9FB081004F4DC1 /* PositionedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D48AC32B9FB081004F4DC1 /* PositionedItem.swift */; };
+		20D48AC62B9FB0B9004F4DC1 /* DDBBTrackDTO+Domain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D48AC52B9FB0B9004F4DC1 /* DDBBTrackDTO+Domain.swift */; };
 		20F67FFC2B9A3801000DE6FD /* BeatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F67FFB2B9A3801000DE6FD /* BeatApp.swift */; };
 		20F67FFE2B9A3801000DE6FD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20F67FFD2B9A3801000DE6FD /* ContentView.swift */; };
 		20F680002B9A3802000DE6FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20F67FFF2B9A3802000DE6FD /* Assets.xcassets */; };
@@ -89,6 +92,9 @@
 		20D48ABB2B9E6CAB004F4DC1 /* TrackDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackDTO.swift; sourceTree = "<group>"; };
 		20D48ABD2B9E6E97004F4DC1 /* TracksDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracksDataSource.swift; sourceTree = "<group>"; };
 		20D48ABF2B9E71EB004F4DC1 /* TracksRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TracksRepository.swift; sourceTree = "<group>"; };
+		20D48AC12B9FAF32004F4DC1 /* GetFavouriteTracksUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetFavouriteTracksUseCase.swift; sourceTree = "<group>"; };
+		20D48AC32B9FB081004F4DC1 /* PositionedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionedItem.swift; sourceTree = "<group>"; };
+		20D48AC52B9FB0B9004F4DC1 /* DDBBTrackDTO+Domain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DDBBTrackDTO+Domain.swift"; sourceTree = "<group>"; };
 		20F67FF82B9A3801000DE6FD /* Beat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Beat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20F67FFB2B9A3801000DE6FD /* BeatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeatApp.swift; sourceTree = "<group>"; };
 		20F67FFD2B9A3801000DE6FD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -356,6 +362,7 @@
 			isa = PBXGroup;
 			children = (
 				3EE667792B9CA42D005CF471 /* GetAlbumDetailsUseCase.swift */,
+				20D48AC12B9FAF32004F4DC1 /* GetFavouriteTracksUseCase.swift */,
 				20F680402B9A75CA000DE6FD /* GetTopAlbumsUseCase.swift */,
 				3EE667902B9D1820005CF471 /* SearchAlbumsUseCase.swift */,
 				3EE667722B9C90FB005CF471 /* Errors */,
@@ -371,6 +378,7 @@
 				20F680472B9A7983000DE6FD /* Artist.swift */,
 				3EE6675F2B9BCD8B005CF471 /* Genre.swift */,
 				20F680492B9A799C000DE6FD /* ImageSize.swift */,
+				20D48AC32B9FB081004F4DC1 /* PositionedItem.swift */,
 				3EE6675D2B9BCCFE005CF471 /* Track.swift */,
 				3EE667522B9BB5CD005CF471 /* PreviewMocks */,
 			);
@@ -384,6 +392,7 @@
 				20F6804E2B9A7B2E000DE6FD /* ArtistDTO+Domain.swift */,
 				3EE667612B9BCEE3005CF471 /* GenreDTO+Domain.swift */,
 				3EE667632B9BCF0C005CF471 /* TrackDTO+Domain.swift */,
+				20D48AC52B9FB0B9004F4DC1 /* DDBBTrackDTO+Domain.swift */,
 			);
 			path = Converters;
 			sourceTree = "<group>";
@@ -614,6 +623,7 @@
 				20F680462B9A77DF000DE6FD /* Album.swift in Sources */,
 				3EE667662B9BD23A005CF471 /* Genre+PreviewMock.swift in Sources */,
 				20F6802F2B9A6449000DE6FD /* DataError.swift in Sources */,
+				20D48AC62B9FB0B9004F4DC1 /* DDBBTrackDTO+Domain.swift in Sources */,
 				3EE6674C2B9BAF22005CF471 /* TopAlbumsView+ViewModel.swift in Sources */,
 				3EE6674E2B9BB20A005CF471 /* TopAlbumsViewFactory.swift in Sources */,
 				3EE667842B9D0995005CF471 /* AlbumsListView.swift in Sources */,
@@ -625,11 +635,13 @@
 				20F67FFE2B9A3801000DE6FD /* ContentView.swift in Sources */,
 				3EE6678F2B9D17F1005CF471 /* SearchViewModel.swift in Sources */,
 				20D48ABC2B9E6CAB004F4DC1 /* TrackDTO.swift in Sources */,
+				20D48AC22B9FAF32004F4DC1 /* GetFavouriteTracksUseCase.swift in Sources */,
 				3EE6677E2B9CAC96005CF471 /* AlbumDetailsViewFactory.swift in Sources */,
 				3EE667742B9C910D005CF471 /* DomainError.swift in Sources */,
 				20F680482B9A7983000DE6FD /* Artist.swift in Sources */,
 				3EE667622B9BCEE3005CF471 /* GenreDTO+Domain.swift in Sources */,
 				3EE6675C2B9BCBAD005CF471 /* GenresDTO.swift in Sources */,
+				20D48AC42B9FB081004F4DC1 /* PositionedItem.swift in Sources */,
 				20F680442B9A76FD000DE6FD /* AlbumDTO.swift in Sources */,
 				3EE667582B9BC7CA005CF471 /* AlbumDetailsRequest.swift in Sources */,
 				3EE667912B9D1820005CF471 /* SearchAlbumsUseCase.swift in Sources */,
