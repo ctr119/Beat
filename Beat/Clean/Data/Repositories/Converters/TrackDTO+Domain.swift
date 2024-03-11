@@ -5,7 +5,8 @@ extension TracksDTO.TrackDTO {
         .init(
             id: id,
             title: title,
-            durationInSeconds: duration
+            durationInSeconds: duration,
+            artistName: artist.name
         )
     }
 }

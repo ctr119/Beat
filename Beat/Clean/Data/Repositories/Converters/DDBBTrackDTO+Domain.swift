@@ -5,9 +5,9 @@ extension TrackDTO {
         let track = Track(
             id: self.trackId,
             title: self.name,
-            durationInSeconds: self.duration
+            durationInSeconds: self.duration,
+            artistName: self.artistName
         )
-        // TODO: Map the artistName
         
         return .init(item: track, position: self.position)
     }
