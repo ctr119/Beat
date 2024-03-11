@@ -2,12 +2,11 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-    // TODO: Pass it to the Favourites tab factory when ready
     let container: ModelContainer
     
     var body: some View {
         TabView {
-            TopAlbumsViewFactory.make()
+            TopAlbumsViewFactory.make(container: container)
                 .tabItem {
                     Label(
                         title: {
@@ -19,7 +18,7 @@ struct ContentView: View {
                     )
                 }
             
-            SearchViewFactory.make()
+            SearchViewFactory.make(container: container)
                 .tabItem {
                     Label(
                         title: {

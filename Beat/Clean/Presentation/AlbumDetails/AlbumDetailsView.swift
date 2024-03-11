@@ -19,28 +19,28 @@ struct AlbumDetailsView: View {
                 .controlSize(.large)
         case .failed(let error):
             Text(error.localizedDescription)
-        case .loaded(let album):
-            content(album: album)
+        case .loaded(let display):
+            content(display: display)
         }
     }
     
     @ViewBuilder
-    private func content(album: Album) -> some View {
+    private func content(display: ViewDisplay) -> some View {
         ScrollView {
             VStack(spacing: 30) {
-                headingSection(album: album)
+                headingSection(display: display)
                 
-                albumInfoSection(album: album)
+                albumInfoSection(display: display)
                 
-                trackList(album: album)
+                trackList(tracks: display.tracks)
             }
         }
         .ignoresSafeArea(.container, edges: .top)
     }
     
-    private func headingSection(album: Album) -> some View {
+    private func headingSection(display: ViewDisplay) -> some View {
         VStack(spacing: 0) {
-            AsyncImage(url: album.coverUrl(size: .large)) { imagePhase in
+            AsyncImage(url: display.coverUrl) { imagePhase in
                 imagePhase
                     .image?
                     .resizable()
@@ -53,7 +53,7 @@ struct AlbumDetailsView: View {
                     .fill(.black.opacity(0.6))
             }
             
-            AsyncImage(url: album.artist.pictureUrl(size: .medium)) { imagePhase in
+            AsyncImage(url: display.artist.pictureUrl(size: .medium)) { imagePhase in
                 imagePhase
                     .image?
                     .resizable()
@@ -72,10 +72,10 @@ struct AlbumDetailsView: View {
         .padding(.bottom, -75.0)
     }
     
-    private func albumInfoSection(album: Album) -> some View {
+    private func albumInfoSection(display: ViewDisplay) -> some View {
         VStack(spacing: 20) {
             VStack(spacing: 8) {
-                Text(album.artist.name)
+                Text(display.artist.name)
                     .font(.largeTitle)
                 
                 Rectangle()
@@ -84,13 +84,13 @@ struct AlbumDetailsView: View {
             }
             
             VStack {
-                Text(album.title)
+                Text(display.title)
                     .font(.title2)
                 
-                Text(album.releaseDate?.toString ?? "")
+                Text(display.releaseDate?.toString ?? "")
                 
                 HStack {
-                    ForEach(album.genres ?? [], id: \.id) { genre in
+                    ForEach(display.genres, id: \.id) { genre in
                         Text("#\(genre.name)")
                             .font(.callout.monospaced())
                             .padding(8)
@@ -106,21 +106,28 @@ struct AlbumDetailsView: View {
         .foregroundStyle(.black.opacity(0.7))
     }
     
-    private func trackList(album: Album) -> some View {
+    private func trackList(tracks: [FavouriteItem<Track>]) -> some View {
         VStack {
             Text("Tracks")
                 .fontDesign(.serif)
                 .font(.headline)
             
             VStack(spacing: 0) {
-                ForEach(Array(zip(tracks(album).indices, tracks(album))), id: \.0) { index, track in
+                ForEach(Array(zip(tracks.indices, tracks)), id: \.0) { index, track in
                     HStack {
                         Text("#\(index + 1).")
-                        Text(track.title)
+                        Text(track.item.title)
                         
                         Spacer()
                         
-                        Text(track.durationInSeconds, format: .timerCountdown)
+                        Text(track.item.durationInSeconds, format: .timerCountdown)
+                        
+                        Button {
+                            // TODO: Save to Favs
+                        } label: {
+                            Image(systemName: track.isFavourite ? "heart.fill" : "heart")
+                                .foregroundStyle(Color.purple)
+                        }
                     }
                     .monospaced()
                     .padding(6)
@@ -130,10 +137,6 @@ struct AlbumDetailsView: View {
                 }
             }
         }
-    }
-    
-    private func tracks(_ album: Album) -> [Track] {
-        album.tracks ?? []
     }
 }
 

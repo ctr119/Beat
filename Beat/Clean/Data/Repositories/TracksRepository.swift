@@ -1,7 +1,9 @@
 import Foundation
 
 protocol TracksRepository {
+    // TODO: Rename both to add "Favourite" in the name
     func getTracks() -> [PositionedItem<Track>]
+    func getTracks(_ ids: [Int]?) -> [PositionedItem<Track>]
 }
 
 struct TracksRepositoryImplementation: TracksRepository {
@@ -12,6 +14,22 @@ struct TracksRepositoryImplementation: TracksRepository {
     }
     
     func getTracks() -> [PositionedItem<Track>] {
-        return tracksDataSource.allTracks().map { $0.toDomain }
+        getTracks(nil)
+    }
+    
+    func getTracks(_ ids: [Int]?) -> [PositionedItem<Track>] {
+        do {
+            var tracksDTO: [TrackDTO] = []
+            
+            if let ids {
+                tracksDTO = try tracksDataSource.getTracks(for: ids)
+            } else {
+                tracksDTO = try tracksDataSource.allTracks()
+            }
+            
+            return tracksDTO.map { $0.toDomain }
+        } catch {
+            return []
+        }
     }
 }

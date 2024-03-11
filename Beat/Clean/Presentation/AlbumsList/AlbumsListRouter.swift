@@ -1,5 +1,6 @@
 import Foundation
 import SwiftUI
+import SwiftData
 
 @Observable
 class AlbumsListRouter {
@@ -8,12 +9,17 @@ class AlbumsListRouter {
     }
     
     var navigationPath: NavigationPath = NavigationPath()
+    let container: ModelContainer
+    
+    init(container: ModelContainer) {
+        self.container = container
+    }
     
     func view(for destination: Destination) -> AnyView {
         switch destination {
         case .albumDetails(let id):
             AnyView(
-                AlbumDetailsViewFactory.make(albumId: id)
+                AlbumDetailsViewFactory.make(albumId: id, container: container)
             )
         }
     }

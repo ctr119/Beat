@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 struct TopAlbumsView: View {
     private enum DisplayMode: String, CaseIterable {
@@ -73,9 +74,12 @@ struct TopAlbumsView: View {
 
 #if DEBUG
 #Preview {
-    TopAlbumsView(
+    let config = ModelConfiguration(isStoredInMemoryOnly: true)
+    let container = try! ModelContainer(for: TrackDTO.self, configurations: config)
+    
+    return TopAlbumsView(
         viewModel: .previewMock,
-        router: .init()
+        router: .init(container: container)
     )
 }
 #endif

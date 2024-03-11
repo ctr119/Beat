@@ -32,20 +32,6 @@ struct AlbumsListView<Content: View>: View {
             }
             .padding(numberOfColumns == 1 ? 0 : 16)
         }
-        
-//                if let onSearchSubmit {
-//                    TextField("Search...", text: $searchQuery)
-//                        .padding()
-//                        .background(
-//                            Capsule()
-//                                .fill(Color.gray.opacity(0.3))
-//                        )
-//                        .padding()
-//                        .onSubmit {
-//                            onSearchSubmit(searchQuery)
-//                        }
-//                }
-//            }
     }
     
     private var columns: [GridItem] {

@@ -2,7 +2,8 @@ import Foundation
 import SwiftData
 
 protocol TracksDataSource {
-    func allTracks() -> [TrackDTO]
+    func allTracks() throws -> [TrackDTO]
+    func getTracks(for ids: [Int]) throws -> [TrackDTO]
     func removeTrack(id: Int) throws
     func save(track: TrackDTO) throws
 }
@@ -14,9 +15,17 @@ struct TracksDataSourceImplementation: TracksDataSource {
         self.context = ModelContext(container)
     }
     
-    func allTracks() -> [TrackDTO] {
+    func allTracks() throws -> [TrackDTO] {
         let descriptor = FetchDescriptor<TrackDTO>()
-        return (try? context.fetch(descriptor)) ?? []
+        return try context.fetch(descriptor)
+    }
+    
+    func getTracks(for ids: [Int]) throws -> [TrackDTO] {
+        let descriptor = FetchDescriptor<TrackDTO>(predicate: #Predicate { ids.contains($0.trackId) })
+        let count = try context.fetchCount(descriptor)
+        guard count > 0 else { return [] }
+        
+        return try context.fetch(descriptor)
     }
     
     func removeTrack(id: Int) throws {

@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 struct SearchView: View {
     @State private var searchQuery = ""
@@ -82,11 +83,14 @@ struct SearchView: View {
 
 #if DEBUG
 #Preview {
-    SearchView(
+    let config = ModelConfiguration(isStoredInMemoryOnly: true)
+    let container = try! ModelContainer(for: TrackDTO.self, configurations: config)
+    
+    return SearchView(
         viewModel: .init(
             searchAlbumsUseCase: SearchAlbumsUseCasePreviewMock()
         ),
-        router: .init()
+        router: .init(container: container)
     )
 }
 #endif

@@ -1,25 +1,31 @@
 import Foundation
 
 protocol GetAlbumDetailsUseCase {
-    func callAsFunction(id albumId: Int) async throws -> Album
+    func callAsFunction(id albumId: Int) async throws -> (album: Album, favouriteTracksIds: [Int])
 }
 
 struct GetAlbumDetailsUseCaseImplementation: GetAlbumDetailsUseCase {
     private let albumsRepository: AlbumsRepository
+    private let tracksRepository: TracksRepository
     
-    init(albumsRepository: AlbumsRepository) {
+    init(albumsRepository: AlbumsRepository, tracksRepository: TracksRepository) {
         self.albumsRepository = albumsRepository
+        self.tracksRepository = tracksRepository
     }
     
-    func callAsFunction(id albumId: Int) async throws -> Album {
-        try await albumsRepository.getDetails(of: albumId)
+    func callAsFunction(id albumId: Int) async throws -> (album: Album, favouriteTracksIds: [Int]) {
+        let album = try await albumsRepository.getDetails(of: albumId)
+        let tracksIds = album.tracks?.map { $0.id } ?? []
+        let favouriteTracksIds = tracksRepository.getTracks(tracksIds).map { $0.item.id }
+        
+        return (album, favouriteTracksIds)
     }
 }
 
 #if DEBUG
 class GetAlbumDetailsUseCasePreviewMock: GetAlbumDetailsUseCase {
-    func callAsFunction(id albumId: Int) async throws -> Album {
-        .previewEminemMock
+    func callAsFunction(id albumId: Int) async throws -> (album: Album, favouriteTracksIds: [Int]) {
+        (.previewEminemMock, [])
     }
 }
 #endif
