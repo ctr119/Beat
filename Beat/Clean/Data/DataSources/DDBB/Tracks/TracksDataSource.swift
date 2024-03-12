@@ -3,6 +3,7 @@ import SwiftData
 
 protocol TracksDataSource {
     func allTracks() throws -> [TrackDTO]
+    func getAllTracksCount() throws -> Int
     func getTracks(for ids: [Int]) throws -> [TrackDTO]
     func removeTrack(id: Int) throws
     func save(track: TrackDTO) throws
@@ -18,6 +19,11 @@ struct TracksDataSourceImplementation: TracksDataSource {
     func allTracks() throws -> [TrackDTO] {
         let descriptor = FetchDescriptor<TrackDTO>()
         return try context.fetch(descriptor)
+    }
+    
+    func getAllTracksCount() throws -> Int {
+        let descriptor = FetchDescriptor<TrackDTO>()
+        return try context.fetchCount(descriptor)
     }
     
     func getTracks(for ids: [Int]) throws -> [TrackDTO] {

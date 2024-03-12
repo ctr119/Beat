@@ -1,8 +1,10 @@
 import Foundation
 
 protocol TracksRepository {
+    func addToFavourites(track: Track) throws
     func getFavouriteTracks() -> [PositionedItem<Track>]
     func getFavouriteTracks(_ ids: [Int]?) -> [PositionedItem<Track>]
+    func removeFromFavourites(track: Track) throws
 }
 
 struct TracksRepositoryImplementation: TracksRepository {
@@ -10,6 +12,12 @@ struct TracksRepositoryImplementation: TracksRepository {
     
     init(tracksDataSource: TracksDataSource) {
         self.tracksDataSource = tracksDataSource
+    }
+    
+    func addToFavourites(track: Track) throws {
+        let count = try tracksDataSource.getAllTracksCount()
+        let trackDTO = track.toDDBBDTO(at: count)
+        try tracksDataSource.save(track: trackDTO)
     }
     
     func getFavouriteTracks() -> [PositionedItem<Track>] {
@@ -30,5 +38,9 @@ struct TracksRepositoryImplementation: TracksRepository {
         } catch {
             return []
         }
+    }
+    
+    func removeFromFavourites(track: Track) throws {
+        try tracksDataSource.removeTrack(id: track.id)
     }
 }

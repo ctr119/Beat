@@ -9,14 +9,17 @@ enum AlbumDetailsViewFactory {
         let tracksDataSource = TracksDataSourceImplementation(container: container)
         let tracksRepository = TracksRepositoryImplementation(tracksDataSource: tracksDataSource)
         
-        let useCase = GetAlbumDetailsUseCaseImplementation(
+        let getAlbumDetailsUseCase = GetAlbumDetailsUseCaseImplementation(
             albumsRepository: repository,
             tracksRepository: tracksRepository
         )
         
+        let updateTrackInFavouritesUseCase = UpdateTrackInFavouritesUseCaseImplementation(tracksRepository: tracksRepository)
+        
         let viewModel = AlbumDetailsView.ViewModel(
             id: albumId,
-            getAlbumDetailsUseCase: useCase
+            getAlbumDetailsUseCase: getAlbumDetailsUseCase,
+            updateTrackInFavouritesUseCase: updateTrackInFavouritesUseCase
         )
         
         return AlbumDetailsView(viewModel: viewModel)

@@ -123,7 +123,7 @@ struct AlbumDetailsView: View {
                         Text(track.item.durationInSeconds, format: .timerCountdown)
                         
                         Button {
-                            // TODO: Save to Favs
+                            viewModel.didTapOnTrackHeart(track)
                         } label: {
                             Image(systemName: track.isFavourite ? "heart.fill" : "heart")
                                 .foregroundStyle(Color.purple)
@@ -145,7 +145,8 @@ struct AlbumDetailsView: View {
     AlbumDetailsView(
         viewModel: .init(
             id: 0,
-            getAlbumDetailsUseCase: GetAlbumDetailsUseCasePreviewMock()
+            getAlbumDetailsUseCase: GetAlbumDetailsUseCasePreviewMock(), 
+            updateTrackInFavouritesUseCase: UpdateTrackInFavouritesUseCasePreviewMock()
         )
     )
 }
