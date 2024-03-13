@@ -7,6 +7,7 @@ protocol TracksDataSource {
     func getTracks(for ids: [Int]) throws -> [TrackDTO]
     func removeTrack(id: Int) throws
     func save(track: TrackDTO) throws
+    func update(tracks: [TrackDTO]) throws
 }
 
 struct TracksDataSourceImplementation: TracksDataSource {
@@ -48,6 +49,20 @@ struct TracksDataSourceImplementation: TracksDataSource {
         guard count == 0 else { return }
         
         context.insert(track)
+        try context.save()
+    }
+    
+    func update(tracks: [TrackDTO]) throws {
+        let trackIds = tracks.map { $0.trackId }
+        
+        try context.delete(model: TrackDTO.self, where: #Predicate {
+            trackIds.contains($0.trackId)
+        })
+        
+        for updatedTrack in tracks {
+            context.insert(updatedTrack)
+        }
+        
         try context.save()
     }
 }

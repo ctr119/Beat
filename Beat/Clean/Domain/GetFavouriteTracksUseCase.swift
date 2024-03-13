@@ -17,3 +17,11 @@ struct GetFavouriteTracksUseCaseImplementation: GetFavouriteTracksUseCase {
         }
     }
 }
+
+#if DEBUG
+struct GetFavouriteTracksUseCasePreviewMock: GetFavouriteTracksUseCase {
+    func callAsFunction() -> [PositionedItem<Track>] {
+        [Track].previewEminemTracks.enumerated().map { PositionedItem<Track>(item: $1, position: $0) }
+    }
+}
+#endif

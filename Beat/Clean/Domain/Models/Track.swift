@@ -1,6 +1,6 @@
 import Foundation
 
-struct Track {
+struct Track: Equatable {
     let id: Int
     let title: String
     let durationInSeconds: Int

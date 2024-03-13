@@ -29,6 +29,18 @@ struct ContentView: View {
                         }
                     )
                 }
+            
+            FavouriteTracksViewFactory.make(container: container)
+                .tabItem {
+                    Label(
+                        title: {
+                            Text("Favs")
+                        },
+                        icon: {
+                            Image(systemName: "heart")
+                        }
+                    )
+                }
         }
         .tint(Color.purple)
     }
