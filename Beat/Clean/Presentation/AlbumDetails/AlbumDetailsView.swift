@@ -4,38 +4,25 @@ struct AlbumDetailsView: View {
     @State var viewModel: ViewModel
     
     var body: some View {
-        switch viewModel.state {
-        case .idle:
-            Color.clear.onAppear(perform: {
-                Task {
-                    await viewModel.loadDetails()
-                }
-            })
-        case .loading:
-            ProgressView()
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .background(Color.gray.opacity(0.3))
-                .tint(Color.black)
-                .controlSize(.large)
-        case .failed(let error):
-            Text(error.localizedDescription)
-        case .loaded(let display):
-            content(display: display)
-        }
-    }
-    
-    @ViewBuilder
-    private func content(display: ViewDisplay) -> some View {
         ScrollView {
             VStack(spacing: 30) {
-                headingSection(display: display)
-                
-                albumInfoSection(display: display)
-                
-                trackList(tracks: display.tracks)
+                if case let .loaded(display) = viewModel.state {
+                    headingSection(display: display)
+                    
+                    albumInfoSection(display: display)
+                    
+                    trackList(tracks: display.tracks)
+                }
             }
+            .frame(maxWidth: .infinity)
         }
         .ignoresSafeArea(.container, edges: .top)
+        .loadingState(viewModel.state)
+        .onAppear {
+            Task {
+                await viewModel.loadDetails()
+            }
+        }
     }
     
     private func headingSection(display: ViewDisplay) -> some View {

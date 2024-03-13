@@ -1,4 +1,5 @@
 import Foundation
+import SwiftUI
 
 extension AlbumDetailsView {
     enum AlbumDetailsError: Error {
@@ -25,7 +26,9 @@ extension AlbumDetailsView {
         
         func loadDetails() async {
             do {
-                state = .loading
+                withAnimation {
+                    state = .loading
+                }
                 
                 let albumDetails = try await getAlbumDetailsUseCase(id: initialId)
                 let tracks = albumDetails.album.tracks?.map {
@@ -43,10 +46,14 @@ extension AlbumDetailsView {
                 )
                 
                 await MainActor.run {
-                    state = .loaded(viewDisplay)
+                    withAnimation {
+                        state = .loaded(viewDisplay)
+                    }
                 }
             } catch {
-                state = .failed(error)
+                withAnimation {
+                    state = .failed(error)
+                }
             }
         }
         
