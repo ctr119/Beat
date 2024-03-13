@@ -13,7 +13,7 @@ struct UpdateTrackInFavouritesUseCaseImplementation: UpdateTrackInFavouritesUseC
     
     func callAsFunction(_ track: FavouriteItem<Track>) throws {
         if track.isFavourite {
-            try tracksRepository.removeFromFavourites(track: track.item)
+            try tracksRepository.removeFavourites(tracks: [track.item])
         } else {
             try tracksRepository.addToFavourites(track: track.item)
         }

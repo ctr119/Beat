@@ -4,8 +4,8 @@ protocol TracksRepository {
     func addToFavourites(track: Track) throws
     func getFavouriteTracks() -> [PositionedItem<Track>]
     func getFavouriteTracks(_ ids: [Int]?) -> [PositionedItem<Track>]
-    func removeFromFavourites(track: Track) throws
-    func update(tracks: [PositionedItem<Track>]) throws
+    func removeFavourites(tracks: [Track]) throws
+    func updateFavourite(tracks: [PositionedItem<Track>]) throws
 }
 
 struct TracksRepositoryImplementation: TracksRepository {
@@ -41,11 +41,11 @@ struct TracksRepositoryImplementation: TracksRepository {
         }
     }
     
-    func removeFromFavourites(track: Track) throws {
-        try tracksDataSource.removeTrack(id: track.id)
+    func removeFavourites(tracks: [Track]) throws {
+        try tracksDataSource.removeTracks(ids: tracks.map { $0.id })
     }
     
-    func update(tracks: [PositionedItem<Track>]) throws {
+    func updateFavourite(tracks: [PositionedItem<Track>]) throws {
         let tracksDDBB = tracks.map { $0.item.toDDBBDTO(at: $0.position) }
         try tracksDataSource.update(tracks: tracksDDBB)
     }

@@ -12,11 +12,8 @@ struct UpdateFavouriteTracksUseCaseImplementation: UpdateFavouriteTracksUseCase 
     }
     
     func callAsFunction(tracksToUpdate: [PositionedItem<Track>], tracksToRemove: [Track]) throws {
-        for track in tracksToRemove {
-            try tracksRepository.removeFromFavourites(track: track)
-        }
-        
-        try tracksRepository.update(tracks: tracksToUpdate)
+        try tracksRepository.removeFavourites(tracks: tracksToRemove)
+        try tracksRepository.updateFavourite(tracks: tracksToUpdate)
     }
 }
 

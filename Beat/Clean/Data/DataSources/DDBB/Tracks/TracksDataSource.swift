@@ -5,7 +5,7 @@ protocol TracksDataSource {
     func allTracks() throws -> [TrackDTO]
     func getAllTracksCount() throws -> Int
     func getTracks(for ids: [Int]) throws -> [TrackDTO]
-    func removeTrack(id: Int) throws
+    func removeTracks(ids: [Int]) throws
     func save(track: TrackDTO) throws
     func update(tracks: [TrackDTO]) throws
 }
@@ -35,9 +35,9 @@ struct TracksDataSourceImplementation: TracksDataSource {
         return try context.fetch(descriptor)
     }
     
-    func removeTrack(id: Int) throws {
+    func removeTracks(ids: [Int]) throws {
         try context.delete(model: TrackDTO.self, where: #Predicate {
-            $0.trackId == id
+            ids.contains($0.trackId)
         })
         try context.save()
     }
