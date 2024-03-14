@@ -50,14 +50,17 @@ struct FavouriteTracksView: View {
             VStack(alignment: .leading) {
                 Text(track.title)
                     .font(.headline)
+                    .bold()
                 
                 Text(track.artistName)
                     .font(.subheadline)
+                    .foregroundStyle(Color.gray)
             }
             
             Spacer()
             
             Text(track.durationInSeconds, format: .timerCountdown)
+                .fontWeight(.light)
         }
         .padding(4)
         .monospaced()
