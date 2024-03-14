@@ -9,7 +9,7 @@ struct FavouriteTracksView: View {
         NavigationStack {
             List {
                 ForEach(viewModel.tracks, id: \.id) { track in
-                    Text(track.title)
+                    trackRowView(track)
                 }
                 .onMove { from, to in
                     viewModel.moveTrack(fromOffsets: from, toOffset: to)
@@ -43,6 +43,24 @@ struct FavouriteTracksView: View {
                 viewModel.loadTracks()
             }
         }
+    }
+    
+    private func trackRowView(_ track: Track) -> some View {
+        HStack {
+            VStack(alignment: .leading) {
+                Text(track.title)
+                    .font(.headline)
+                
+                Text(track.artistName)
+                    .font(.subheadline)
+            }
+            
+            Spacer()
+            
+            Text(track.durationInSeconds, format: .timerCountdown)
+        }
+        .padding(4)
+        .monospaced()
     }
 }
 
