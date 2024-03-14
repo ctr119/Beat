@@ -42,10 +42,12 @@ struct TracksRepositoryImplementation: TracksRepository {
     }
     
     func removeFavourites(tracks: [Track]) throws {
+        guard tracks.count > 0 else { return }
         try tracksDataSource.removeTracks(ids: tracks.map { $0.id })
     }
     
     func updateFavourite(tracks: [PositionedItem<Track>]) throws {
+        guard tracks.count > 0 else { return }
         let tracksDDBB = tracks.map { $0.item.toDDBBDTO(at: $0.position) }
         try tracksDataSource.update(tracks: tracksDDBB)
     }
