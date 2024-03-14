@@ -31,6 +31,7 @@ struct AlbumListGalleryRow: View {
                 Text(album.artist.name)
                     .font(.subheadline.italic())
             }
+            .lineLimit(1)
         }
     }
 }
